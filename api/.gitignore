@@ -1,0 +1,76 @@
+# Build Folders
+bin/
+obj/
+out/
+
+# User-Specific Files
+*.user
+*.userosscache
+*.suo
+*.vspx
+*.vspscc
+
+# IDE-Specific Files
+.vscode/
+.idea/
+*.code-workspace
+
+# Visual Studio Files
+*.vs/
+.vs/
+
+# Logs
+*.log
+
+# Cache Files
+*.cache
+*.temp
+
+# Configuration Files
+appsettings.*.json # Keep sensitive configurations like connection strings out of Git
+appsettings.Development.json # Avoid committing development-specific settings
+appsettings.Local.json # Local environment settings
+
+# DotNet Core Generated Files
+project.lock.json
+project.fragment.lock.json
+
+# Package Management
+*.nuget/
+*.nupkg
+packages/
+*.snupkg
+
+# Publish Output
+wwwroot/
+dist/
+node_modules/
+
+# Database
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+# Runtime Files
+*.exe
+*.dll
+*.pdb
+
+# OS-Specific Files
+.DS_Store
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.bak
+*.swp
+*.pid
+*.seed
+
+# Coverage Reports
+coverage/
+*.coverage
+*.coveragexml
+
+# Tooling
