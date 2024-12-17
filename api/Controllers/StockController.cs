@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Mappers;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,8 @@ namespace api.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
+
+        // here we securing the _context variable 
         private readonly ApplicationDbContext _context;
         public StockController(ApplicationDbContext context)
         {
@@ -22,11 +25,11 @@ namespace api.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var stocks = _context.Stocks.ToList();
+            var stocks = _context.Stocks.ToList().Select(s => s.ToStockDTO());
             return Ok(stocks);
         }
 
-        // get the stock by the id
+        // get the stock by an id
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] int id)
         {
@@ -35,7 +38,7 @@ namespace api.Controllers
             {
                 return NotFound();
             }
-            return Ok(stock);
+            return Ok(stock.ToStockDTO());
 
         }
 
