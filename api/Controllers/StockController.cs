@@ -30,8 +30,8 @@ namespace api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var stocks = await _stockRepo.GetAllAsync(); // getting correct data cause of interface
-            var stockDto = stocks.Select(s => s.ToStockDTO()); // filtering the data cause of DTO
+            var stocks = await _stockRepo.GetAllAsync(); // getting correct data cause of interface  interface\repo
+            var stockDto = stocks.Select(s => s.ToStockDTO()); // filtering the data cause of DTO  mapper\dto
             return Ok(stockDto);
         }
 
@@ -39,20 +39,20 @@ namespace api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var stock = await _stockRepo.GetByIdAsync(id);
+            var stock = await _stockRepo.GetByIdAsync(id);  //interface\repo
             if (stock == null)
             {
                 return NotFound();
             }
-            return Ok(stock.ToStockDTO());
+            return Ok(stock.ToStockDTO()); //mapper\dto
         }
 
         // create stock
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] StockRequestDto stockDTO)
+        public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDTO)
         {
-            var stockModel = stockDTO.ToStockFromCreateDTO();
-            await _stockRepo.CreateAsync(stockModel);
+            var stockModel = stockDTO.ToStockFromCreateDTO(); //mapper\dto
+            await _stockRepo.CreateAsync(stockModel); //interface\rep
             return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDTO());
         }
 

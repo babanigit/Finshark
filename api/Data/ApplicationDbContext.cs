@@ -9,11 +9,8 @@ namespace api.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        // private readonly DbContextOptions _options;
         public ApplicationDbContext(DbContextOptions dbContextOption) : base(dbContextOption)
         {
-            // _options = dbContextOption;
-
         }
 
         public DbSet<Stock> Stocks { get; set; }

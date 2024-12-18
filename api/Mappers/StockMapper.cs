@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using api.DTOs.stocks;
 using api.Models;
 
+// here, the static functions work as the extension to the object inside argument
+
 namespace api.Mappers
 {
     public static class StockMapper
@@ -25,7 +27,7 @@ namespace api.Mappers
 
         }
 
-        public static Stock ToStockFromCreateDTO(this StockRequestDto stockDto)
+        public static Stock ToStockFromCreateDTO(this CreateStockRequestDto stockDto)
         {
             return new Stock
             {

@@ -4,16 +4,12 @@ using api.Repositories;
 using Microsoft.EntityFrameworkCore;
 // using Microsoft.OpenApi.Models;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-
-
 // builder.Services.AddSwaggerGen();
-
 // builder.Services.AddSwaggerGen(option =>
 // {
 //     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
@@ -42,14 +38,14 @@ builder.Services.AddControllers();
 //     });
 // });
 
-
 builder.Services.AddRazorPages();
-
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+// dependency injection
 builder.Services.AddScoped<IStockRepository, StockRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();
 
@@ -65,7 +61,6 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-
 // builder.Services.AddCors(options =>
 // {
 //     options.AddDefaultPolicy(
@@ -75,12 +70,10 @@ app.UseRouting();
 //                           .AllowCredentials());
 // });
 
-
 app.UseAuthorization();
 
 app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+app.MapRazorPages().WithStaticAssets();
 
 app.MapControllers();
 

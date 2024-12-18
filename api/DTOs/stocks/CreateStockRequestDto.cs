@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// this is the format to user write in the body , to create a request to the api
+
 namespace api.DTOs.stocks
 {
-    public class StockRequestDto
+    public class CreateStockRequestDto
     {
         public string Symbol { get; set; } = string.Empty;
         public string CompanyName { get; set; } = string.Empty;
