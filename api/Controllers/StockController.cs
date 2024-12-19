@@ -16,7 +16,6 @@ namespace api.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
-
         // here we securing the _context variable 
         private readonly ApplicationDbContext _context;
         private readonly IStockRepository _stockRepo;

@@ -47,15 +47,22 @@ namespace api.Controllers
             return Ok(comment.ToCommentDto()); //dto
         }
 
-        // [HttpPost("{stockId}")]
-        // public async Task<IActionResult> Create([FromBody] int stockId, CreateCommentDto commentDto)
-        // {
+        [HttpPost("{stockId}")]
+        public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentDto commentDto)
+        {
+            // var stock = await _stockRepo.GetByIdAsync(stockId);
 
-        //     var stock = await _stockRepo.GetByIdAsync(stockId);
+            if (!await _stockRepo.StockExists(stockId))
+            {
+                return BadRequest("Stock does not exist");
+            }
 
+            var commentModel = commentDto.ToCommentFromCreate(stockId);
 
-        // }
+            await _commentRepo.CreateAsync(commentModel);
 
+            return CreatedAtAction(nameof(GetById), new { id = commentModel.Id }, commentModel.ToCommentDto());
 
+        }
     }
 }
