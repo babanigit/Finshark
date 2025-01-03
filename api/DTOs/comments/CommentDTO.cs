@@ -13,8 +13,6 @@ namespace api.DTOs.comments
         public DateTime CreatedOn { get; set; } = DateTime.Now;
         public string CreatedBy { get; set; } = string.Empty;
         public int? StockId { get; set; }
-        // public Stock? Stock { get; set; }
-        // public string AppUserId { get; set; }
-        // public AppUser AppUser { get; set; }
+
     }
 }
