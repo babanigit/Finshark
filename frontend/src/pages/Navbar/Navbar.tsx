@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
 import "./Navbar.css";
-// import { useAuth } from "../../Context/useAuth";
+import { useAuth } from "../../Context/useAuth";
 
 const Navbar = () => {
-  function isLoggedIn(): boolean {
-    return false;
-  }
-
-  // const { isLoggedIn, user, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
   return (
     <nav className=" bg-gray-100 rounded-lg relative container mx-auto p-6">
       <div className="flex items-center justify-between">
@@ -26,11 +22,11 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-6 text-back">
             <div className="hover:text-darkBlue">
               Welcome,
-              {/* {user?.userName} */}
-              aniket
+              {user?.userName}
             </div>
             <a
-              onClick={() => {}}
+              onClick={logout}
+              style={{ cursor: "pointer" }}
               className="px-8 py-3 font-bold rounded text-black bg-lightGreen hover:opacity-70"
             >
               Logout
