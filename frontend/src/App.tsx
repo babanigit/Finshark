@@ -1,12 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./pages/Navbar/Navbar";
+import { UserProvider } from "./Context/useAuth";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <>
-      <Navbar />
-      <Outlet />
-      <div> footer </div>
+      <UserProvider>
+        <Navbar />
+        <Outlet />
+        <ToastContainer />
+      </UserProvider>
     </>
   );
 };
