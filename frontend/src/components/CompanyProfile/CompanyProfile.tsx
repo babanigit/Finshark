@@ -99,7 +99,7 @@ const CompanyProfile = () => {
         </>
       ) : (
         <>
-          <div className=" text-black">hello loader</div>
+          <div className=" text-black">hello loader CompanyProfile</div>
           {/* <Spinner /> */}
         </>
       )}

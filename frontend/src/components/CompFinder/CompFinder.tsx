@@ -2,31 +2,47 @@ import { useEffect, useState } from "react";
 import CompFinderItem from "./CompFinderItem/CompFinderItem";
 import { CompanyCompData } from "../../company";
 import { getCompData } from "../../api";
-import Spinner from "../Spinners/Spinner";
+
 type Props = {
   ticker: string;
 };
 
 const CompFinder = ({ ticker }: Props) => {
   const [companyData, setCompanyData] = useState<CompanyCompData>();
+  const [error, setError] = useState<string>("");
+
   useEffect(() => {
     const getComps = async () => {
-      const value = await getCompData(ticker);
-      setCompanyData(value?.data[0]);
+      try {
+        const value = await getCompData(ticker);
+        if (value?.data[0]) {
+          setCompanyData(value.data[0]);
+          setError(""); // Clear any previous errors
+        } else if (value["Error Message"]) {
+          setError(value["Error Message"]);
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch company data");
+      }
     };
     getComps();
   }, [ticker]);
+
+  if (error) {
+    return (
+      <div className="m-4 p-4 text-red-600 bg-red-100 rounded-md">{error}</div>
+    );
+  }
+
   return (
     <div className="inline-flex rounded-md shadow-sm m-4" role="group">
       {companyData ? (
         companyData?.peersList.map((ticker) => {
-          return <CompFinderItem ticker={ticker} />;
+          return <CompFinderItem key={ticker} ticker={ticker} />;
         })
       ) : (
-        <>
-          <div className=" text-black">hello loader</div>
-          {/* <Spinner /> */}
-        </>
+        <div className="text-black">Loading...</div>
       )}
     </div>
   );

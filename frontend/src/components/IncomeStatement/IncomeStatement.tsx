@@ -1,14 +1,13 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Table from "../Table/Table";
 import { CompanyIncomeStatement } from "../../company";
 import { getIncomeStatement } from "../../api";
-import Spinner from "../Spinners/Spinner";
+// import Spinner from "../Spinners/Spinner";
 import {
   formatLargeMonetaryNumber,
   formatRatio,
 } from "../../Helpers/NumberFormatting";
-
 
 const configs = [
   {
@@ -92,7 +91,11 @@ const IncomeStatement = () => {
       {incomeStatement ? (
         <Table config={configs} data={incomeStatement} />
       ) : (
-        <Spinner />
+        <>
+          <div>hello loader IncomeStatement</div>
+
+          {/* <Spinner /> */}
+        </>
       )}
     </>
   );
