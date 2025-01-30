@@ -15,35 +15,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// builder.Services.AddSwaggerGen();
-// builder.Services.AddSwaggerGen(option =>
-// {
-//     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
-//     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-//     {
-//         In = ParameterLocation.Header,
-//         Description = "Please enter a valid token",
-//         Name = "Authorization",
-//         Type = SecuritySchemeType.Http,
-//         BearerFormat = "JWT",
-//         Scheme = "Bearer"
-//     });
-//     option.AddSecurityRequirement(new OpenApiSecurityRequirement
-//     {
-//         {
-//             new OpenApiSecurityScheme
-//             {
-//                 Reference = new OpenApiReference
-//                 {
-//                     Type=ReferenceType.SecurityScheme,
-//                     Id="Bearer"
-//                 }
-//             },
-//             new string[]{}
-//         }
-//     });
-// });
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:5173")  // Your React Vite frontend URL
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
+});
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
@@ -65,7 +46,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-//jwt
+// JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
@@ -89,16 +70,13 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// dependency injections
+// Dependency Injections
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
-// api dependency injections
 builder.Services.AddScoped<IFMPService, FMPService>();
 builder.Services.AddHttpClient<IFMPService, FMPService>();
-
-
 
 var app = builder.Build();
 
@@ -106,36 +84,21 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 
-app.UseCors(x => x
-     .AllowAnyMethod()
-     .AllowAnyHeader()
-     .AllowCredentials()
-    //   .WithOrigins("http://localhost:5173))
-      .SetIsOriginAllowed(origin => true));
+// Ensure CORS is applied before authentication & authorization
+app.UseCors();
 
 app.UseRouting();
-
-// builder.Services.AddCors(options =>
-// {
-//     options.AddDefaultPolicy(
-//         builder => builder.WithOrigins("http://localhost:5000", "https://localhost:5001")
-//                           .AllowAnyHeader()
-//                           .AllowAnyMethod()
-//                           .AllowCredentials());
-// });
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
-
 app.MapControllers();
 
 app.Run();
