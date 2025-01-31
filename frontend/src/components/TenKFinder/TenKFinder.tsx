@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { CompanyTenK } from "../../company";
 import { getTenK } from "../../api";
 import TenKFinderItem from "./TenKFinderItem/TenKFinderItem";
-// import Spinner from "../Spinners/Spinner";
+import Spinner from "../Spinners/Spinner";
 
 type Props = {
   ticker: string;
@@ -25,8 +25,7 @@ const TenKFinder = ({ ticker }: Props) => {
         })
       ) : (
         <>
-          <div className=" text-black">hello loader TenkFinder</div>
-          {/* <Spinner /> */}
+          <Spinner />
         </>
       )}
     </div>

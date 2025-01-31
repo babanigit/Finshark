@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import Table from "../Table/Table";
 import { CompanyIncomeStatement } from "../../company";
 import { getIncomeStatement } from "../../api";
-// import Spinner from "../Spinners/Spinner";
+import Spinner from "../Spinners/Spinner";
 import {
   formatLargeMonetaryNumber,
   formatRatio,
@@ -92,9 +92,7 @@ const IncomeStatement = () => {
         <Table config={configs} data={incomeStatement} />
       ) : (
         <>
-          <div>hello loader IncomeStatement</div>
-
-          {/* <Spinner /> */}
+          <Spinner />
         </>
       )}
     </>

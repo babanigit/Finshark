@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { CompanyKeyMetrics } from "../../company";
 import { getKeyMetrics } from "../../api";
 import RatioList from "../RatioList/RatioList";
-// import Spinner from "../Spinners/Spinner";
+import Spinner from "../Spinners/Spinner";
 import {
   formatLargeNonMonetaryNumber,
   formatRatio,
@@ -86,7 +86,7 @@ const CompanyProfile = () => {
     const getCompanyKeyRatios = async () => {
       const value = await getKeyMetrics(ticker);
       setCompanyData(value?.data[0]);
-      console.log("companyData", companyData);
+      // console.log("companyData", companyData);
     };
     getCompanyKeyRatios();
   }, []);
@@ -99,8 +99,7 @@ const CompanyProfile = () => {
         </>
       ) : (
         <>
-          <div className=" text-black">hello loader CompanyProfile</div>
-          {/* <Spinner /> */}
+          <Spinner />
         </>
       )}
     </>

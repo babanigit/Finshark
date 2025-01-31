@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import RatioList from "../RatioList/RatioList";
 import { getBalanceSheet } from "../../api";
 // import Table from "../Table/Table";
-// import Spinner from "../Spinners/Spinner";
+import Spinner from "../Spinners/Spinner";
 import {
   formatLargeMonetaryNumber,
   // formatLargeNonMonetaryNumber,
@@ -94,8 +94,7 @@ const BalanceSheet = () => {
         <RatioList config={config} data={companyData} />
       ) : (
         <>
-          <div className=" text-black">hello loader BalanceSheet</div>
-          {/* <Spinner /> */}
+          <Spinner />
         </>
       )}
     </>

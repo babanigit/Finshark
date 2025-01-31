@@ -15,15 +15,16 @@ const CompFinder = ({ ticker }: Props) => {
     const getComps = async () => {
       try {
         const value = await getCompData(ticker);
+        console.log(" the compFinder1 error is:- ", value);
+
         if (value?.data[0]) {
           setCompanyData(value.data[0]);
           setError(""); // Clear any previous errors
-        } else if (value["Error Message"]) {
-          setError(value["Error Message"]);
+        } else {
+          setError("Failed to fetch company data :- " + value);
         }
       } catch (err) {
         console.error(err);
-        setError("Failed to fetch company data");
       }
     };
     getComps();

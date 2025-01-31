@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { CompanyCashFlow } from "../../company";
 import { getCashFlow } from "../../api";
 import Table from "../Table/Table";
-// import Spinner from "../Spinners/Spinner";
+import Spinner from "../Spinners/Spinner";
 import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatting";
 
 const config = [
@@ -64,9 +64,7 @@ const CashflowStatement = () => {
     <Table config={config} data={cashFlowData}></Table>
   ) : (
     <>
-      <div>hello loader CashFlowStatement</div>
-
-      {/* <Spinner /> */}
+      <Spinner />
     </>
   );
 };

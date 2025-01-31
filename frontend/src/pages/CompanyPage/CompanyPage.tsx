@@ -41,7 +41,6 @@ const CompanyPage = () => {
         </div>
       ) : (
         <>
-          {/* <div className=" text-black">hello loader CompanyPage</div> */}
           <Spinner />
         </>
       )}
