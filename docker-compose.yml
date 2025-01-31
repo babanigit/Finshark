@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
+
+  backend:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "5222:5222"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=PortfolioDB;User Id=sa;Password=YourStrong@Passw0rd;
+      - ASPNETCORE_URLS=http://+:5222
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "YourStrong@Passw0rd"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    restart: always
+
+volumes:
+  sqlserver-data:
