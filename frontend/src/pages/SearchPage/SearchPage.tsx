@@ -48,13 +48,12 @@ const SearchPage = () => {
   };
 
   const onPortfolioCreate = (e: FormEvent<HTMLFormElement>) => {
-    console.log("onPortfolioCreate clicked")
     e.preventDefault();
     const form = e.currentTarget;
     const stockValue = form.elements[0] as HTMLInputElement; // Access the first input element
     portfolioAddAPI(stockValue.value)
       .then((res) => {
-        if (res?.status === 204) {
+        if (res) {
           toast.success("Stock added to portfolio!");
           getPortfolio();
         }
@@ -80,12 +79,20 @@ const SearchPage = () => {
 
   const onSearchSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const result = await searchCompanies(search);
+    let result;
+    if (search.length !== 0) {
+      result = await searchCompanies(search);
+    }
+    console.log("the search result is:- ", result);
     //setServerError(result.data);
     if (typeof result === "string") {
       setServerError(result);
-    } else if (Array.isArray(result.data)) {
-      setSearchResult(result.data);
+    } else if (Array.isArray(result!.data)) {
+      if (result!.data.length === 0 && search.length !== 0) {
+        toast.error("Company not found");
+      }
+      console.log("else if hitting");
+      setSearchResult(result!.data);
     }
   };
   return (
@@ -95,15 +102,16 @@ const SearchPage = () => {
         search={search}
         handleSearchChange={handleSearchChange}
       />
+      <CardList
+        searchResults={searchResult}
+        search={search}
+        onPortfolioCreate={onPortfolioCreate}
+      />
+      {serverError && <div>Unable to connect to API</div>}
       <ListPortfolio
         portfolioValues={portfolioValues!}
         onPortfolioDelete={onPortfolioDelete}
       />
-      <CardList
-        searchResults={searchResult}
-        onPortfolioCreate={onPortfolioCreate}
-      />
-      {serverError && <div>Unable to connect to API</div>}
     </>
   );
 };

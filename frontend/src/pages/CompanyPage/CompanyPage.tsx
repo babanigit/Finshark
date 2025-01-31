@@ -5,7 +5,7 @@ import { getCompanyProfile } from "../../api";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import CompanyDashboard from "../../components/CompanyDashboard/CompanyDashboard";
 import Tile from "../../components/Tile/Tile";
-// import Spinner from "../../components/Spinners/Spinner";
+import Spinner from "../../components/Spinners/Spinner";
 import CompFinder from "../../components/CompFinder/CompFinder";
 import TenKFinder from "../../components/TenKFinder/TenKFinder";
 
@@ -41,8 +41,8 @@ const CompanyPage = () => {
         </div>
       ) : (
         <>
-          <div className=" text-black">hello loader CompanyPage</div>
-          {/* <Spinner /> */}
+          {/* <div className=" text-black">hello loader CompanyPage</div> */}
+          <Spinner />
         </>
       )}
     </>

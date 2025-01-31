@@ -4,9 +4,18 @@ import { UserProfileToken } from "../Models/User";
 
 const api = "http://localhost:5222/api/";
 
+// Create a default Axios instance with credentials enabled
+const axiosInstance = axios.create({
+  baseURL: api,
+  withCredentials: true,  // ✅ Allows sending cookies and headers
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 export const loginAPI = async (username: string, password: string) => {
   try {
-    const data = await axios.post<UserProfileToken>(api + "account/login", {
+    const data = await axiosInstance.post<UserProfileToken>("account/login", {
       username: username,
       password: password,
     });
@@ -22,7 +31,7 @@ export const registerAPI = async (
   password: string
 ) => {
   try {
-    const data = await axios.post<UserProfileToken>(api + "account/register", {
+    const data = await axiosInstance.post<UserProfileToken>("account/register", {
       email: email,
       username: username,
       password: password,
