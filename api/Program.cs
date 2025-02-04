@@ -32,9 +32,17 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 });
 
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+
+// Configure sql server connection
+// builder.Services.AddDbContext<ApplicationDbContext>(
+//     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+// );
+
+// Configure PostgreSQL connection
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {

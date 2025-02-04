@@ -21,7 +21,7 @@ const CompFinder = ({ ticker }: Props) => {
           setCompanyData(value.data[0]);
           setError(""); // Clear any previous errors
         } else {
-          setError("Failed to fetch company data :- " + value);
+          setError("Company data not Available ");
         }
       } catch (err) {
         console.error(err);
@@ -32,7 +32,7 @@ const CompFinder = ({ ticker }: Props) => {
 
   if (error) {
     return (
-      <div className="m-4 p-4 text-red-600 bg-red-100 rounded-md">{error}</div>
+      <div className="m-4 p-4  rounded-md">{error}</div>
     );
   }
 
