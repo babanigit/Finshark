@@ -30,6 +30,8 @@ out/
 appsettings.*.json # Keep sensitive configurations like connection strings out of Git
 appsettings.Development.json # Avoid committing development-specific settings
 appsettings.Local.json # Local environment settings
+.env
+appsettings.json
 
 # DotNet Core Generated Files
 project.lock.json

@@ -26,7 +26,19 @@ namespace api.Services
             try
             {
 
-                var result = await _httpClient.GetAsync($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={_config["FMPKey"]}");
+                var apiKey = _config["FMPKey"]; // Get the API Key
+
+                if (string.IsNullOrEmpty(apiKey))
+                {
+                    Console.WriteLine("FMPKey is missing or empty!");
+                    return null;
+                }
+
+                Console.WriteLine($"Using API Key: {apiKey}"); // Debugging Log
+
+                var staticKey = $"https://financialmodelingprep.com/api/v3/profile/query=AA&apikey=XBxgWb82iv6gwQGqFAkvs81uehEqswlT" ;
+
+                var result = await _httpClient.GetAsync($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey=XBxgWb82iv6gwQGqFAkvs81uehEqswlT");
 
                 if (result.IsSuccessStatusCode)
                 {
