@@ -1,0 +1,31 @@
+# Ignore .NET user-specific files
+**/.vs
+**/.vscode
+**/*.sw?
+**/*.user
+**/*.suo
+**/*.csproj.user
+**/.git
+**/.gitignore
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore dependencies that will be restored in the container
+**/node_modules
+**/packages
+
+# Ignore temporary and system files
+**/Thumbs.db
+**/ehthumbs.db
+**/desktop.ini
+
+# Ignore logs and runtime-generated files
+logs/
+**/*.log
+# appsettings.*.json
+
+# Docker-related files (optional, if not needed)
+.dockerignore
+Dockerfile
