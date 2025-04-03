@@ -44,5 +44,7 @@ services:
     depends_on:
       - backend
     # restart: always
+
+    
 volumes:
   postgres-data:

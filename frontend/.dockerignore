@@ -1,3 +1,36 @@
+<<<<<<< HEAD
 node_modules
 .env
 .env.example
+=======
+# Ignore node modules and dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Ignore build artifacts
+build
+dist
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Ignore logs
+logs
+*.log
+log/**/*.log
+
+# Ignore Docker files (if not needed inside container)
+.dockerignore
+Dockerfile
+docker-compose.yml
+>>>>>>> 4cff9dc35b8ac4e4d8ff48a90071094fc35ae5ab

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignore .NET user-specific files
 **/.vs
 **/.vscode
@@ -29,3 +30,42 @@ logs/
 # Docker-related files (optional, if not needed)
 .dockerignore
 Dockerfile
+=======
+# Ignore bin and obj folders (compiled output)
+bin/
+obj/
+
+# Ignore user-specific and temp files
+*.user
+*.vs
+*.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+# Ignore logs and debug files
+logs/
+*.log
+
+# Ignore dependency folders
+node_modules/
+packages/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment variables and secrets
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+secrets/
+
+# Ignore Docker and build-related files
+.dockerignore
+Dockerfile
+docker-compose.yml
+>>>>>>> 4cff9dc35b8ac4e4d8ff48a90071094fc35ae5ab

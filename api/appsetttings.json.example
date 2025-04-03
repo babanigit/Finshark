@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Database=FinShark;Username=postgres;Password=admin"
+    "DefaultConnection": "Host=hehehe;Database=FinShark;Username=hehehe;Password=hehehe"
   },
   "Logging": {
     "LogLevel": {
@@ -10,10 +10,10 @@
   },
   "AllowedHosts": "*",
 
-  "FMPKey": "XBxgWb82iv6gwQGqFAkvs81uehEqswlT",
+  "FMPKey": "key_here",
   "JWT": {
     "Issuer": "http://localhost:5246",
     "Audience": "http://localhost:5246",
-    "SigningKey": "sdgfijjh3466iu345g87g08c24g7204gr803g30587ghh35807fg39074fvg80493745gf082b507807g807fgf"
+    "SigningKey": "key_here"
   }
 }
