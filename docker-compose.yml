@@ -20,17 +20,20 @@ services:
     container_name: FinShark-dotnetWebApi-backend-bab
     ports:
       - "5222:5222"
-    env_file:
-      - ./.env # Load environment variables
+    # env_file:
+    #   - ./.env # Load environment variables
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - DefaultConnection="Host=localhost;Database=FinShark;Username=postgres;Password=admin";
-      - ASPNETCORE_URLS=http://+:5222
-    volumes:
-      - ./api:/app
+      ASPNETCORE_ENVIRONMENT: development
+      # DefaultConnection: Host=postgres;Database=FinShark;Username=postgres;Password=admin
+      ASPNETCORE_URLS: http://+:5222
+
     depends_on:
       - postgres
     # restart: always
+
+    volumes:
+      - ./api:/app
+      - ./keys:/root/.aspnet/DataProtection-Keys
 
   frontend:
     build:
@@ -38,13 +41,12 @@ services:
       dockerfile: Dockerfile
     container_name: FinShark-react-frontend-bab
     ports:
-      - "3000:80"
-    env_file:
-      - ./.env # Load environment variables
+      - "5173:80"
+    # env_file:
+    #   - ./.env # Load environment variables
     depends_on:
       - backend
     # restart: always
 
-    
 volumes:
   postgres-data:

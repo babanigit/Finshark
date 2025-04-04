@@ -1,71 +1,56 @@
-<<<<<<< HEAD
-# Ignore .NET user-specific files
-**/.vs
-**/.vscode
-**/*.sw?
-**/*.user
-**/*.suo
-**/*.csproj.user
-**/.git
-**/.gitignore
+# .dockerignore for .NET 9 Web API
 
 # Ignore build output
 bin/
 obj/
+out/
 
-# Ignore dependencies that will be restored in the container
-**/node_modules
-**/packages
-
-# Ignore temporary and system files
-**/Thumbs.db
-**/ehthumbs.db
-**/desktop.ini
-
-# Ignore logs and runtime-generated files
-logs/
-**/*.log
-# appsettings.*.json
-
-# Docker-related files (optional, if not needed)
-.dockerignore
-Dockerfile
-=======
-# Ignore bin and obj folders (compiled output)
-bin/
-obj/
-
-# Ignore user-specific and temp files
+# Ignore user-specific files
 *.user
-*.vs
-*.vscode
 *.suo
-*.ntvs*
-*.njsproj
+*.userosscache
 *.sln.docstates
 
-# Ignore logs and debug files
-logs/
+# Ignore logs
 *.log
 
-# Ignore dependency folders
-node_modules/
+# Ignore Visual Studio Code settings
+.vscode/
+.vscode/*
+
+# Ignore Rider/JetBrains project settings
+.idea/
+*.sln.iml
+
+# Ignore test results
+TestResults/
+
+# Ignore build artifacts
+*.dbmdl
+*.pdb
+*.mdb
+
+# Ignore packages
+*.nupkg
+*.snupkg
 packages/
 
-# Ignore system-specific files
-.DS_Store
+# Ignore Docker-related
+Dockerfile.*
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+*.DS_Store
 Thumbs.db
 
-# Ignore environment variables and secrets
-.env
-.env.local
-.env.development
-.env.production
-.env.test
-secrets/
+# Ignore git stuff (if Docker context includes the repo)
+.git/
+.gitignore
 
-# Ignore Docker and build-related files
-.dockerignore
-Dockerfile
-docker-compose.yml
->>>>>>> 4cff9dc35b8ac4e4d8ff48a90071094fc35ae5ab
+# Ignore deployment config (optional)
+.env
+secrets.json
+# appsettings.Development.json
+appsettings.json.example

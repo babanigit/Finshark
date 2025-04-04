@@ -38,10 +38,21 @@ builder.Services.AddRazorPages();
 //     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 // );
 
-// Configure PostgreSQL connection
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// Method-1 Configure PostgreSQL connection
+// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Method-2
+// var connectionString = builder.Configuration["DefaultConnection"];
+
+// Method-3  DO THIS: Read directly from environment variable
+// var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseNpgsql(connectionString));
+
+// Method-4
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -109,5 +120,14 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
 app.MapControllers();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var db = services.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate(); // Applies any pending migrations
+}
+
 
 app.Run();

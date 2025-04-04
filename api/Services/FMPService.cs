@@ -39,6 +39,8 @@ namespace api.Services
                 var staticKey = $"https://financialmodelingprep.com/api/v3/profile/query=AA&apikey=XBxgWb82iv6gwQGqFAkvs81uehEqswlT" ;
 
                 var result = await _httpClient.GetAsync($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey=XBxgWb82iv6gwQGqFAkvs81uehEqswlT");
+                var result2 = await _httpClient.GetAsync($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={_config["FMPKey"]}");
+
 
                 if (result.IsSuccessStatusCode)
                 {
