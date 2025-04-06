@@ -22,3 +22,5 @@ EXPOSE 5222
 
 # Run the application
 CMD ["dotnet", "out/api.dll"]
+# CMD ["sh", "-c", "dotnet ef database update && dotnet out/api.dll"]
+
