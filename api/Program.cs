@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("http://localhost:5173")  // Your React Vite frontend URL
+        builder.WithOrigins("http://13.201.166.186:5173")  // Your React Vite frontend URL
                .AllowAnyHeader()
                .AllowAnyMethod()
                .AllowCredentials();
