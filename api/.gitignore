@@ -1,78 +1,77 @@
-# Build Folders
+# Ignore build output
 bin/
 obj/
-out/
+# out/
 
-# User-Specific Files
+# Ignore user-specific files
 *.user
-*.userosscache
+*.rsuser
 *.suo
-*.vspx
-*.vspscc
+*.userosscache
+*.sln.docstates
 
-# IDE-Specific Files
-.vscode/
-.idea/
-*.code-workspace
-
-# Visual Studio Files
-*.vs/
-.vs/
-
-# Logs
-*.log
-
-# Cache Files
-*.cache
-*.temp
-
-# Configuration Files
-appsettings.*.json # Keep sensitive configurations like connection strings out of Git
-appsettings.Development.json # Avoid committing development-specific settings
-appsettings.Local.json # Local environment settings
-.env
-appsettings.json
-
-# DotNet Core Generated Files
+# Ignore lock files
 project.lock.json
-project.fragment.lock.json
+*.lock.json
 
-# Package Management
-*.nuget/
-*.nupkg
+# Ignore packages folder
 packages/
+*.nupkg
 *.snupkg
 
-# Publish Output
-wwwroot/
-dist/
-node_modules/
+# Ignore app settings secrets (if sensitive info is stored here)
+appsettings.json
+# appsettings.*.json
+.env
 
-# Database
+# Ignore publish output
+wwwroot/
+*.PublishProfiles/
+
+# Ignore EF migrations history
+# Migrations/
+
+# Ignore Rider project files
+.idea/
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore MacOS-specific files
+.DS_Store
+
+# Ignore logs
+*.log
+
+# Ignore compiled files
+# *.dll
+# *.exe
+# *.pdb
+# *.cache
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+*.diff
+*.patch
+*.csproj.user
+*.vs/
+
+# Ignore NuGet package cache
+.nuget/
+
+# Ignore backup files
+*.bak
+
+# Ignore by default
+!.gitignore
+
+# Ignore test results
+TestResults/
+
+# Ignore local databases
 *.mdf
 *.ldf
 *.sqlite
-*.db
-
-# Runtime Files
-*.exe
-*.dll
-*.pdb
-
-# OS-Specific Files
-.DS_Store
-Thumbs.db
-
-# Temporary Files
-*.tmp
-*.bak
-*.swp
-*.pid
-*.seed
-
-# Coverage Reports
-coverage/
-*.coverage
-*.coveragexml
-
-# Tooling
+*.sqlite3
