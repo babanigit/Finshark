@@ -16,7 +16,7 @@ export interface SearchResponse {
   data: CompanySearch[];
 }
 const apiKey = (import.meta.env.VITE_API_KEY || undefined) || "XBxgWb82iv6gwQGqFAkvs81uehEqswlT";
-console.log("the key is : - ", apiKey)
+// console.log("the key is : - ", apiKey)
 if (!apiKey) {
   console.error("API key is missing!");
 }
