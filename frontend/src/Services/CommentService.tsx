@@ -2,7 +2,7 @@ import axios from "axios";
 import { CommentGet, CommentPost } from "../Models/Comment";
 import { handleError } from "../Helpers/ErrorHandler";
 
-const api = "http://localhost:5222/api/comment/";
+const api = "http://13.201.166.186:5222/api/comment/";
 
 export const commentPostAPI = async (
   title: string,

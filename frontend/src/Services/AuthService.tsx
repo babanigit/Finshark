@@ -2,7 +2,7 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { UserProfileToken } from "../Models/User";
 
-const api = "http://localhost:5222/api/";
+const api = "http://13.201.166.186:5222/api/";
 
 // Create a default Axios instance with credentials enabled
 const axiosInstance = axios.create({

@@ -17,7 +17,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddPolicy(
+        "AllowFrontend",
+        builder =>
     {
         builder.WithOrigins("http://13.201.166.186:5173")  // Your React Vite frontend URL
                .AllowAnyHeader()
@@ -118,7 +120,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Ensure CORS is applied before authentication & authorization
-app.UseCors();
+app.UseCors("AllowFrontend");
 
 app.UseRouting();
 
