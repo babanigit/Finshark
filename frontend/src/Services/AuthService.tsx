@@ -2,12 +2,20 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { UserProfileToken } from "../Models/User";
 
-const api = "http://13.201.166.186:5222/api/";
+// const api = "http://13.201.166.186:5222/api/";
+// const api = "http://localhost:5222/api/";
+
+// if (import.meta.env.ENV_DOTNET === "dev") {
+//   api = "http://localhost:5222/api/";
+// }
+
+const api = import.meta.env.VITE_DOTNET_API_URL || "http://localhost:5222/api/";
+
 
 // Create a default Axios instance with credentials enabled
 const axiosInstance = axios.create({
   baseURL: api,
-  withCredentials: true,  // ✅ Allows sending cookies and headers
+  withCredentials: true, // ✅ Allows sending cookies and headers
   headers: {
     "Content-Type": "application/json",
   },
@@ -31,11 +39,14 @@ export const registerAPI = async (
   password: string
 ) => {
   try {
-    const data = await axiosInstance.post<UserProfileToken>("account/register", {
-      email: email,
-      username: username,
-      password: password,
-    });
+    const data = await axiosInstance.post<UserProfileToken>(
+      "account/register",
+      {
+        email: email,
+        username: username,
+        password: password,
+      }
+    );
     return data;
   } catch (error) {
     handleError(error);

@@ -12,20 +12,27 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// var config = builder.Configuration;
+// var ENV = config["ENV"];
+// var reactAPI = "http://localhost:5173";
+// if (ENV == "production")
+// {
+//     reactAPI = "http://13.201.166.186:5173";
+// }
+
 // Add services to the container.
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(
-        "AllowFrontend",
-        builder =>
-    {
-        builder.WithOrigins("http://13.201.166.186:5173")  // Your React Vite frontend URL
-               .AllowAnyHeader()
-               .AllowAnyMethod()
-               .AllowCredentials();
-    });
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173", "http://13.201.166.186:5173") // 👈 Exact origins
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials(); // ✅ Only works if origins are explicitly specified
+        });
 });
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>

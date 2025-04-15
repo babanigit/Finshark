@@ -23,8 +23,8 @@ services:
     # env_file:
     #   - ./.env # Load environment variables
     environment:
-      ASPNETCORE_ENVIRONMENT: development
-      # DefaultConnection: Host=postgres;Database=FinShark;Username=postgres;Password=admin
+      ASPNETCORE_ENVIRONMENT: production
+      DefaultConnection: Host=postgres;Database=FinShark;Username=postgres;Password=admin
       ASPNETCORE_URLS: http://+:5222
 
     depends_on:
@@ -42,6 +42,8 @@ services:
     container_name: FinShark-react-frontend-bab
     ports:
       - "5173:80"
+    environment:
+      ENV_DOTNET: production
     # env_file:
     #   - ./.env # Load environment variables
     depends_on:
