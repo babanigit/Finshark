@@ -44,8 +44,10 @@ services:
       - "5173:80"
     environment:
       ENV_DOTNET: production
-    # env_file:
-    #   - ./.env # Load environment variables
+      VITE_DOTNET_API_URL: http://13.201.166.186:5222/api/
+
+    env_file:
+      - ./.env # Load environment variables
     depends_on:
       - backend
     # restart: always
