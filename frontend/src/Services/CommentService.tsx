@@ -8,7 +8,7 @@ import { handleError } from "../Helpers/ErrorHandler";
 // if (import.meta.env.ENV_DOTNET === "dev") {
 // }
 
-const api = import.meta.env.VITE_DOTNET_API_URL + "comment/" || "http://localhost:5222/api/comment/";
+const api = import.meta.env.VITE_DOTNET_API_URL + "comment/" || "http://13.201.166.186:5222/api/comment/";
 
 
 export const commentPostAPI = async (

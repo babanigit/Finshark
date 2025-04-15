@@ -9,7 +9,7 @@ import { UserProfileToken } from "../Models/User";
 //   api = "http://localhost:5222/api/";
 // }
 
-const api = import.meta.env.VITE_DOTNET_API_URL || "http://localhost:5222/api/";
+const api = import.meta.env.VITE_DOTNET_API_URL || "http://13.201.166.186:5222/api/";
 
 
 // Create a default Axios instance with credentials enabled
