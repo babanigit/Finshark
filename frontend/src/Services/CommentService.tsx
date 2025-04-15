@@ -8,7 +8,7 @@ import { handleError } from "../Helpers/ErrorHandler";
 // if (import.meta.env.ENV_DOTNET === "dev") {
 // }
 
-const api = import.meta.env.VITE_DOTNET_API_URL + "comments/" || "http://localhost:5222/api/comments/";
+const api = import.meta.env.VITE_DOTNET_API_URL + "comment/" || "http://localhost:5222/api/comment/";
 
 
 export const commentPostAPI = async (
@@ -23,7 +23,7 @@ export const commentPostAPI = async (
     });
     return data;
   } catch (error) {
-    handleError(error);
+    handleError(error + "LOL commentPostAPI");
   }
 };
 
@@ -32,6 +32,6 @@ export const commentGetAPI = async (symbol: string) => {
     const data = await axios.get<CommentGet[]>(api + `?Symbol=${symbol}`);
     return data;
   } catch (error) {
-    handleError(error);
+    handleError(error + "LOL commentGetAPI");
   }
 };

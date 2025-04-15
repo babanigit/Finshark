@@ -16,7 +16,7 @@ export const portfolioAddAPI = async (symbol: string) => {
     const data = await axios.post<PortfolioPost>(api + `?symbol=${symbol}`);
     return data;
   } catch (error) {
-    handleError(error);
+    handleError(error + "LOL portfolioAddAPI");
   }
 };
 
@@ -25,7 +25,7 @@ export const portfolioDeleteAPI = async (symbol: string) => {
     const data = await axios.delete<PortfolioPost>(api + `?symbol=${symbol}`);
     return data;
   } catch (error) {
-    handleError(error);
+    handleError(error + "LOL portfolioDeleteAPI");
   }
 };
 
@@ -34,6 +34,6 @@ export const portfolioGetAPI = async () => {
     const data = await axios.get<PortfolioGet[]>(api);
     return data;
   } catch (error) {
-    handleError(error);
+    handleError(error + "LOL portfolioGetAPI");
   }
 };

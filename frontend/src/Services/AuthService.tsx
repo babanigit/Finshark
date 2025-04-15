@@ -29,7 +29,7 @@ export const loginAPI = async (username: string, password: string) => {
     });
     return data;
   } catch (error) {
-    handleError(error);
+    handleError(error + "LOL loginAPI");
   }
 };
 
@@ -49,6 +49,6 @@ export const registerAPI = async (
     );
     return data;
   } catch (error) {
-    handleError(error);
+    handleError(error + "LOL registerAPI");
   }
 };
