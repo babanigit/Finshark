@@ -9,8 +9,10 @@ import { UserProfileToken } from "../Models/User";
 //   api = "http://localhost:5222/api/";
 // }
 
-const api = import.meta.env.VITE_DOTNET_API_URL || "http://13.201.166.186:5222/api/";
-
+const api =
+  import.meta.env.VITE_DOTNET_API_URL || "http://13.201.166.186:5222/api/";
+  
+console.log(" the api link is :- ", api);
 
 // Create a default Axios instance with credentials enabled
 const axiosInstance = axios.create({
@@ -29,7 +31,8 @@ export const loginAPI = async (username: string, password: string) => {
     });
     return data;
   } catch (error) {
-    handleError(error + "LOL loginAPI");
+    console.log("[bab] --- error from  loginAPI");
+    handleError(error);
   }
 };
 
@@ -49,6 +52,7 @@ export const registerAPI = async (
     );
     return data;
   } catch (error) {
-    handleError(error + "LOL registerAPI");
+    console.log("[bab] --- error from  registerAPI");
+    handleError(error);
   }
 };

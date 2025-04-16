@@ -23,7 +23,9 @@ export const commentPostAPI = async (
     });
     return data;
   } catch (error) {
-    handleError(error + "LOL commentPostAPI");
+    console.log("[bab] --- error from  commentPostAPI")
+
+    handleError(error);
   }
 };
 
@@ -32,6 +34,8 @@ export const commentGetAPI = async (symbol: string) => {
     const data = await axios.get<CommentGet[]>(api + `?Symbol=${symbol}`);
     return data;
   } catch (error) {
-    handleError(error + "LOL commentGetAPI");
+    console.log("[bab] --- error from  commentGetAPI")
+
+    handleError(error);
   }
 };

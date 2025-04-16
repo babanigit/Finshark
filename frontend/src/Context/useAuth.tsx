@@ -75,7 +75,9 @@ export const UserProvider = ({ children }: Props) => {
           navigate("/search");
         }
       })
-      .catch((e) => toast.warning("Server error occurred : ", e));
+      .catch((e) => {
+        toast.warning("Server error occurred : ", e);
+      });
   };
 
   const isLoggedIn = () => {

@@ -16,7 +16,9 @@ export const portfolioAddAPI = async (symbol: string) => {
     const data = await axios.post<PortfolioPost>(api + `?symbol=${symbol}`);
     return data;
   } catch (error) {
-    handleError(error + "LOL portfolioAddAPI");
+    console.log("[bab] --- error from  portfolioAddAPI")
+
+    handleError(error);
   }
 };
 
@@ -25,7 +27,9 @@ export const portfolioDeleteAPI = async (symbol: string) => {
     const data = await axios.delete<PortfolioPost>(api + `?symbol=${symbol}`);
     return data;
   } catch (error) {
-    handleError(error + "LOL portfolioDeleteAPI");
+    console.log("[bab] --- error from  portfolioDeleteAPI")
+
+    handleError(error);
   }
 };
 
@@ -34,6 +38,8 @@ export const portfolioGetAPI = async () => {
     const data = await axios.get<PortfolioGet[]>(api);
     return data;
   } catch (error) {
-    handleError(error + "LOL portfolioGetAPI");
+    console.log("[bab] --- error from  portfolioGetAPI")
+
+    handleError(error);
   }
 };
