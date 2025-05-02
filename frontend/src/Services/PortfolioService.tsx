@@ -2,21 +2,14 @@ import axios from "axios";
 import { PortfolioGet, PortfolioPost } from "../Models/Portfolio";
 import { handleError } from "../Helpers/ErrorHandler";
 
-// const api = "http://13.201.166.186:5222/api/portfolio/";
-// const api = "http://localhost:5222/api/portfolio/";
-
-// if (import.meta.env.ENV_DOTNET === "dev") {
-// }
-
-const api = import.meta.env.VITE_DOTNET_API_URL + "portfolio/" || "http://13.201.166.186:5222/api/portfolio/";
-
+const api = import.meta.env.VITE_BACKEND_API_URL + "/api/portfolio/";
 
 export const portfolioAddAPI = async (symbol: string) => {
   try {
     const data = await axios.post<PortfolioPost>(api + `?symbol=${symbol}`);
     return data;
   } catch (error) {
-    console.log("[bab] --- error from  portfolioAddAPI")
+    console.log("[bab] --- error from  portfolioAddAPI");
 
     handleError(error);
   }
@@ -27,7 +20,7 @@ export const portfolioDeleteAPI = async (symbol: string) => {
     const data = await axios.delete<PortfolioPost>(api + `?symbol=${symbol}`);
     return data;
   } catch (error) {
-    console.log("[bab] --- error from  portfolioDeleteAPI")
+    console.log("[bab] --- error from  portfolioDeleteAPI");
 
     handleError(error);
   }
@@ -38,7 +31,7 @@ export const portfolioGetAPI = async () => {
     const data = await axios.get<PortfolioGet[]>(api);
     return data;
   } catch (error) {
-    console.log("[bab] --- error from  portfolioGetAPI")
+    console.log("[bab] --- error from  portfolioGetAPI");
 
     handleError(error);
   }

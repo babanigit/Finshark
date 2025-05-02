@@ -2,16 +2,8 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { UserProfileToken } from "../Models/User";
 
-// const api = "http://13.201.166.186:5222/api/";
-// const api = "http://localhost:5222/api/";
+const api = import.meta.env.VITE_BACKEND_API_URL + "/api/";
 
-// if (import.meta.env.ENV_DOTNET === "dev") {
-//   api = "http://localhost:5222/api/";
-// }
-
-const api =
-  import.meta.env.VITE_DOTNET_API_URL || "http://13.201.166.186:5222/api/";
-  
 console.log(" the api link is :- ", api);
 
 // Create a default Axios instance with credentials enabled
@@ -25,7 +17,7 @@ const axiosInstance = axios.create({
 
 export const loginAPI = async (username: string, password: string) => {
   try {
-    const data = await axiosInstance.post<UserProfileToken>("account/login", {
+    const data = await axiosInstance.post<UserProfileToken>(api + "account/login", {
       username: username,
       password: password,
     });
@@ -43,7 +35,7 @@ export const registerAPI = async (
 ) => {
   try {
     const data = await axiosInstance.post<UserProfileToken>(
-      "account/register",
+      api + "account/register",
       {
         email: email,
         username: username,

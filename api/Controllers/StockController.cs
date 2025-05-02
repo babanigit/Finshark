@@ -35,6 +35,8 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            Console.WriteLine(" ✅ getting the stock .... ");
+
             var stocks = await _stockRepo.GetAllAsync(query); // getting correct data cause of interface  interface\repo
 
             var stockDto = stocks.Select(s => s.ToStockDTO()).ToList(); // filtering the data cause of DTO  mapper\dto

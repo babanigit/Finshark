@@ -12,6 +12,34 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// Load .env variables
+DotNetEnv.Env.Load();
+builder.Configuration.AddEnvironmentVariables();
+
+var config = builder.Configuration;
+
+// Read config values
+var IS_LOCALHOST = Environment.GetEnvironmentVariable("IS_LOCALHOST");
+var connStr = IS_LOCALHOST == "true"
+    ? Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection_LocalHost")
+    : Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+
+var fmpKey = Environment.GetEnvironmentVariable("FMPKey");
+var jwtIssuer = Environment.GetEnvironmentVariable("JWT__Issuer");
+var jwtAudience = Environment.GetEnvironmentVariable("JWT__Audience");
+var jwtSigningKey = Environment.GetEnvironmentVariable("JWT__SigningKey");
+
+// Debug output
+Console.WriteLine("== Debug Config Values ==");
+Console.WriteLine("DefaultConnection     : " + connStr);
+Console.WriteLine("FMPKey                : " + fmpKey);
+Console.WriteLine("JWT:Issuer            : " + jwtIssuer);
+Console.WriteLine("JWT:Audience          : " + jwtAudience);
+Console.WriteLine("JWT:SigningKey        : " + jwtSigningKey);
+
+
+
 // var config = builder.Configuration;
 // var ENV = config["ENV"];
 // var reactAPI = "http://localhost:5173";

@@ -2,14 +2,7 @@ import axios from "axios";
 import { CommentGet, CommentPost } from "../Models/Comment";
 import { handleError } from "../Helpers/ErrorHandler";
 
-// const api = "http://13.201.166.186:5222/api/comment/";
-// const api = "http://localhost:5222/api/comment/";
-
-// if (import.meta.env.ENV_DOTNET === "dev") {
-// }
-
-const api = import.meta.env.VITE_DOTNET_API_URL + "comment/" || "http://13.201.166.186:5222/api/comment/";
-
+const api = import.meta.env.VITE_BACKEND_API_URL + "/api/comment/";
 
 export const commentPostAPI = async (
   title: string,
@@ -23,7 +16,7 @@ export const commentPostAPI = async (
     });
     return data;
   } catch (error) {
-    console.log("[bab] --- error from  commentPostAPI")
+    console.log("[bab] --- error from  commentPostAPI");
 
     handleError(error);
   }
@@ -34,7 +27,7 @@ export const commentGetAPI = async (symbol: string) => {
     const data = await axios.get<CommentGet[]>(api + `?Symbol=${symbol}`);
     return data;
   } catch (error) {
-    console.log("[bab] --- error from  commentGetAPI")
+    console.log("[bab] --- error from  commentGetAPI");
 
     handleError(error);
   }
