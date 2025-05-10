@@ -24,7 +24,7 @@ services:
       - ./.env # Load environment variables
     environment:
       # ASPNETCORE_ENVIRONMENT: production
-      # DefaultConnection: Host=postgres;Database=FinShark;Username=postgres;Password=admin
+      DefaultConnection: Host=postgres;Database=FinShark;Username=postgres;Password=admin
       ASPNETCORE_URLS: http://+:5222
 
     depends_on:
