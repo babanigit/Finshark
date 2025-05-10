@@ -71,7 +71,7 @@ namespace api.Controllers
             {
                 return StatusCode(500, "Internal server error:- " + e);
             }
-
+            
         }
 
         [HttpPost("login")]
@@ -80,7 +80,10 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+            var normalizedUsername = loginDto.Username.ToUpper();
+
+            var user = await _userManager.Users
+                .FirstOrDefaultAsync(x => x.NormalizedUserName == normalizedUsername);
 
             if (user == null) return Unauthorized("Invalid username!");
 
@@ -97,7 +100,5 @@ namespace api.Controllers
                 }
             );
         }
-
-
     }
 }

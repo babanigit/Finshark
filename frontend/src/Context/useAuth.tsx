@@ -52,11 +52,22 @@ export const UserProvider = ({ children }: Props) => {
           localStorage.setItem("user", JSON.stringify(userObj));
           setToken(res?.data.token);
           setUser(userObj!);
+
+          // ✅ Set auth header for immediate use
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + res?.data.token;
+
           toast.success("Login Success!");
           navigate("/search");
         }
       })
-      .catch((e) => toast.warning("Server error occurred : ", e));
+      .catch((e) =>
+        toast.warning(
+          `Server error occurred [bab-reg] : ${
+            e.response?.data?.message || e.message
+          }`
+        )
+      );
   };
 
   const loginUser = async (username: string, password: string) => {
@@ -71,12 +82,21 @@ export const UserProvider = ({ children }: Props) => {
           localStorage.setItem("user", JSON.stringify(userObj));
           setToken(res?.data.token);
           setUser(userObj!);
+
+          // ✅ Set auth header for immediate use
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + res?.data.token;
+
           toast.success("Login Success!");
           navigate("/search");
         }
       })
       .catch((e) => {
-        toast.warning("Server error occurred : ", e);
+        toast.warning(
+          `Server error occurred [bab-log] : ${
+            e.response?.data?.message || e.message
+          }`
+        );
       });
   };
 
