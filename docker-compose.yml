@@ -14,43 +14,24 @@ services:
       - postgres-data:/var/lib/postgresql/data # Persist data
 
   backend:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: FinShark-dotnetWebApi-backend-bab
+    build: .
+    container_name: FinShark-dotnetWebApi-react-coupled-bab
     ports:
       - "5222:5222"
     env_file:
       - ./.env # Load environment variables
     environment:
-      # ASPNETCORE_ENVIRONMENT: production
-      DefaultConnection: Host=postgres;Database=FinShark;Username=postgres;Password=admin
+      ASPNETCORE_ENVIRONMENT: production
       ASPNETCORE_URLS: http://+:5222
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=FinShark;Username=postgres;Password=admin;
 
     depends_on:
       - postgres
     # restart: always
 
     volumes:
-      - ./api:/app
+      - .:/app
       - ./keys:/root/.aspnet/DataProtection-Keys
-
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: FinShark-react-frontend-bab
-  #   ports:
-  #     - "5173:80"
-
-  #   # environment:
-  #   #   ENV_DOTNET: production
-
-  #   # env_file:
-  #   #   - ./.env # Load environment variables
-  #   depends_on:
-  #     - backend
-  #   # restart: always
 
 volumes:
   postgres-data:
