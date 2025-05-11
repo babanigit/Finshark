@@ -20,6 +20,6 @@ COPY ./frontend/dist ./frontend/dist
 EXPOSE 5222
 
 # Run the application
-CMD ["dotnet", "out/Finshark.dll"]
+CMD ["dotnet", "Finshark.dll"]
 # CMD ["sh", "-c", "dotnet ef database update && dotnet out/api.dll"]
 
