@@ -7,7 +7,7 @@ interface Props {
   onPortfolioDelete: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-const ListPortfolio = ({ portfolioValues, onPortfolioDelete }: Props) => {
+const ListPortfolio = ({ portfolioValues = [], onPortfolioDelete }: Props) => {
   return (
     <section id="portfolio">
       <h2 className="mb-3 mt-3 text-3xl font-semibold text-center md:text-4xl">

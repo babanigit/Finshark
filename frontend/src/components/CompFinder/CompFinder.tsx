@@ -31,14 +31,12 @@ const CompFinder = ({ ticker }: Props) => {
   }, [ticker]);
 
   if (error) {
-    return (
-      <div className="m-4 p-4  rounded-md">{error}</div>
-    );
+    return <div className="m-4 p-4  rounded-md">{error}</div>;
   }
 
   return (
     <div className="inline-flex rounded-md shadow-sm m-4" role="group">
-      {companyData ? (
+      {Array.isArray(companyData?.peersList) && companyData ? (
         companyData?.peersList.map((ticker) => {
           return <CompFinderItem key={ticker} ticker={ticker} />;
         })

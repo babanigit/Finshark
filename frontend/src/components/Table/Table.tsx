@@ -3,7 +3,7 @@ type Props = {
   data: any;
 };
 
-const Table = ({ config, data }: Props) => {
+const Table = ({ config = [], data = [] }: Props) => {
   const renderedRows = data.map((company: any) => {
     return (
       <tr key={company.cik}>

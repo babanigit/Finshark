@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CardList: React.FC<Props> = ({
-  searchResults,
+  searchResults = [],
   onPortfolioCreate,
   search,
 }: Props): JSX.Element => {

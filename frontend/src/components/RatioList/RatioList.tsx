@@ -3,7 +3,7 @@ type Props = {
   data: any;
 };
 
-const RatioList = ({ config, data }: Props) => {
+const RatioList = ({ config=[], data=[] }: Props) => {
   const renderedCells = config.map((row: any) => {
     return (
       <li className="py-6 sm:py-6">

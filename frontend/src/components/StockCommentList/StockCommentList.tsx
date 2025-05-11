@@ -5,7 +5,7 @@ type Props = {
   comments: CommentGet[];
 };
 
-const StockCommentList = ({ comments }: Props) => {
+const StockCommentList = ({ comments =[] }: Props) => {
   return (
     <>
       {comments
