@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
-    [Route("api/comment")]
+    [Route("comment")]
     [ApiController]
     public class CommentController : ControllerBase
     {

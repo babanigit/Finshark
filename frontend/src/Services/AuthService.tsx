@@ -2,7 +2,7 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { UserProfileToken } from "../Models/User";
 
-const api = import.meta.env.VITE_BACKEND_API_URL + "/api/";
+const api = import.meta.env.VITE_BACKEND_API_URL ;
 
 console.log(" the api link is :- ", api);
 

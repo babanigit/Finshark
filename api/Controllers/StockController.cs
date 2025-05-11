@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
-    [Route("api/stock")]
+    [Route("stock")]
     [ApiController]
     public class StockController : ControllerBase
     {

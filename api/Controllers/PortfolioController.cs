@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
-    [Route("api/portfolio")]
+    [Route("portfolio")]
     [ApiController]
     public class PortfolioController : Controller
     {

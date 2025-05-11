@@ -7,6 +7,7 @@ using api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 // using Microsoft.OpenApi.Models;
 
@@ -137,6 +138,20 @@ builder.Services.AddHttpClient<IFMPService, FMPService>();
 
 var app = builder.Build();
 
+var reactPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, "frontend", "dist");
+
+Console.WriteLine(" ✅  Resolved path: " + reactPath);
+
+if (!Directory.Exists(reactPath))
+{
+    Console.WriteLine($" ✅ Serving react from: {reactPath}");
+    Console.WriteLine(" ✅ Dist folder exists? " + Directory.Exists(reactPath));
+    Console.WriteLine(" ✅ Index.html exists? " + File.Exists(Path.Combine(reactPath, "index.html")));
+
+    return;
+}
+
+
 // Migrate database automatically
 using (var scope = app.Services.CreateScope())
 {
@@ -152,6 +167,20 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Serve default files (like index.html)
+app.UseDefaultFiles(new DefaultFilesOptions
+{
+    FileProvider = new PhysicalFileProvider(reactPath),
+    RequestPath = ""
+});
+
+// Serve static files (js, css, images)
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(reactPath),
+    RequestPath = ""
+});
+
 app.UseHttpsRedirection();
 
 // Ensure CORS is applied before authentication & authorization
@@ -165,5 +194,17 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
 app.MapControllers();
+
+// Basic route for /
+app.MapGet("/api/status", () => "API is live");
+
+
+// This should come after all other route mappings
+// This is important to serve index.html for react routing
+app.MapFallbackToFile("index.html", new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(reactPath)
+});
+
 
 app.Run();

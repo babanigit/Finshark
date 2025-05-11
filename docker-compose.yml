@@ -35,22 +35,22 @@ services:
       - ./api:/app
       - ./keys:/root/.aspnet/DataProtection-Keys
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: FinShark-react-frontend-bab
-    ports:
-      - "5173:80"
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: FinShark-react-frontend-bab
+  #   ports:
+  #     - "5173:80"
 
-    # environment:
-    #   ENV_DOTNET: production
+  #   # environment:
+  #   #   ENV_DOTNET: production
 
-    # env_file:
-    #   - ./.env # Load environment variables
-    depends_on:
-      - backend
-    # restart: always
+  #   # env_file:
+  #   #   - ./.env # Load environment variables
+  #   depends_on:
+  #     - backend
+  #   # restart: always
 
 volumes:
   postgres-data:
