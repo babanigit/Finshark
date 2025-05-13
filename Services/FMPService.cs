@@ -28,7 +28,7 @@ namespace Finshark.Services
                 var apiKey = Environment.GetEnvironmentVariable("FMPKey");
                 // var apiKey = _config["FMPKey"];
 
-                // Console.WriteLine($"🔐 API Key: {apiKey}");
+                Console.WriteLine($"🔐 API Key: {apiKey}");
                 if (string.IsNullOrEmpty(apiKey))
                 {
                     Console.WriteLine("❌ FMPKey is missing!");
@@ -36,15 +36,15 @@ namespace Finshark.Services
                 }
 
                 var url = $"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={apiKey}";
-                // Console.WriteLine($"🌐 Fetching: {url}");
+                Console.WriteLine($"🌐 Fetching: {url}");
 
                 var result = await _httpClient.GetAsync(url);
-                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                Console.WriteLine($"📥 Status: {result.StatusCode}");
 
                 if (result.IsSuccessStatusCode)
                 {
                     var content = await result.Content.ReadAsStringAsync();
-                    // Console.WriteLine($"📄 Response: {content}");
+                    Console.WriteLine($"📄 Response: {content}");
 
                     var tasks = JsonConvert.DeserializeObject<FMPStock[]>(content);
                     var stock = tasks.FirstOrDefault();
