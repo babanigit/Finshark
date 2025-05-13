@@ -105,7 +105,7 @@ if (!Directory.Exists(reactPath))
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();  // <--- This line does the migration at startup
+    // db.Database.Migrate();  // <--- This line does the migration at startup
 }
 
 

@@ -50,10 +50,13 @@ namespace Finshark.Controllers
 
             var appUser = await _userManager.FindByNameAsync(username);
             var stock = await _stockRepo.GetBySymbolAsync(symbol);
+            Console.WriteLine($"🔍 the stock is 1: {stock?.Symbol ?? "null"}");
 
             if (stock == null)
             {
                 stock = await _fmpService.FindStockBySymbolAsync(symbol);
+
+                Console.WriteLine($"🔍 the stock is 2: {stock?.Symbol ?? "null"}");
                 if (stock == null)
                 {
                     return BadRequest("Stock does not exists");

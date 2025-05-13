@@ -19,7 +19,10 @@ COPY ./frontend/dist ./frontend/dist
 # Expose necessary ports
 EXPOSE 5222
 
-# Run the application
+# # Run the application
+# CMD ["dotnet", "out/Finshark.dll"]
+
+# for railways
 CMD ["dotnet", "Finshark.dll"]
-# CMD ["sh", "-c", "dotnet ef database update && dotnet out/api.dll"]
+
 

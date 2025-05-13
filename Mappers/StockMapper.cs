@@ -49,7 +49,7 @@ namespace Finshark.Mappers
                 Purchase = (decimal)fmpStock.price,
                 LastDiv = (decimal)fmpStock.lastDiv,
                 Industry = fmpStock.industry,
-                MarketCap = fmpStock.mktCap
+                MarketCap = (long)fmpStock.mktCap
             };
         }
 
