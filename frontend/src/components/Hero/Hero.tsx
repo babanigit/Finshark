@@ -11,14 +11,14 @@ const Hero = () => {
           <h1 className="text-5xl font-bold text-center lg:text-6xl lg:max-w-md lg:text-left">
             Financial data with no news.
           </h1>
-          <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">
+          <p className="text-2xl text-center  lg:max-w-md lg:text-left">
             Search relevant financial documents without fear mongering and fake
             news.
           </p>
           <div className="mx-auto lg:mx-0">
             <Link
               to="/search"
-              className="py-5 px-10 text-2xl font-bold text-white bg-lightGreen rounded lg:py-4 hover:opacity-70"
+              className="py-5 px-10 text-2xl font-bold text-white bg-blue-400 bg-opacity-50 rounded lg:py-4 hover:opacity-70"
             >
               Get Started
             </Link>

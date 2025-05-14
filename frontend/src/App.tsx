@@ -3,14 +3,38 @@ import Navbar from "./pages/Navbar/Navbar";
 import { UserProvider } from "./Context/useAuth";
 import { ToastContainer } from "react-toastify";
 
+import { ThemeProvider } from "styled-components";
+import { themes } from "./assets/theme";
+import { createContext, useState } from "react";
+
+interface SetThemeContextType {
+  (value: string): void;
+}
+
+export const SetThemeContext = createContext<SetThemeContextType>(() => {});
+
 const App = () => {
+  const [themeState, setThemeState] = useState<string>("dark");
+
   return (
     <>
-      <UserProvider>
-        <Navbar />
-        <Outlet />
-        <ToastContainer />
-      </UserProvider>
+      <div
+        style={{
+          backgroundColor: themes[themeState].body2,
+          color: themes[themeState].text,
+          borderColor: themes[themeState].text,
+        }}
+      >
+        <ThemeProvider theme={themes[themeState]}>
+          <SetThemeContext.Provider value={setThemeState}>
+            <UserProvider>
+              <Navbar theme={themes[themeState]} />
+              <Outlet />
+              <ToastContainer />
+            </UserProvider>
+          </SetThemeContext.Provider>
+        </ThemeProvider>
+      </div>
     </>
   );
 };
