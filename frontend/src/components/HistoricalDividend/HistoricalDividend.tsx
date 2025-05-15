@@ -19,6 +19,7 @@ const HistoricalDividend = () => {
           return c.getTime() - d.getTime();
         })
       );
+      console.log("✅ the dividend is:-0 ", dividend)
     };
     fetchHistoricalDividend();
   }, []);

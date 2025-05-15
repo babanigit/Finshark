@@ -18,7 +18,7 @@ const TenKFinder = ({ ticker }: Props) => {
     getTenKData();
   }, [ticker]);
   return (
-    <div className="inline-flex rounded-md shadow-sm m-4" role="group">
+    <div className="inline-flex rounded-md shadow-lg m-4" role="group">
       {companyData ? (
         companyData?.slice(0, 5).map((tenK) => {
           return <TenKFinderItem tenK={tenK} />;

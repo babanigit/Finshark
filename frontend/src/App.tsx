@@ -20,7 +20,7 @@ const App = () => {
     <>
       <div
         style={{
-          backgroundColor: themes[themeState].body2,
+          backgroundColor: themes[themeState].body,
           color: themes[themeState].text,
           borderColor: themes[themeState].text,
         }}

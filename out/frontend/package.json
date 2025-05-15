@@ -20,6 +20,7 @@
     "react-spinners": "^0.15.0",
     "react-toastify": "^11.0.2",
     "recharts": "^2.15.0",
+    "styled-components": "^6.1.18",
     "uuid": "^11.0.3",
     "yup": "^1.6.1"
   },

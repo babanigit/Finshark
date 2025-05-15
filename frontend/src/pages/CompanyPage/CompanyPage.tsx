@@ -34,7 +34,7 @@ const CompanyPage = () => {
             <Tile title="Sector" subTitle={company.sector} />
             <CompFinder ticker={company.symbol} />
             <TenKFinder ticker={company.symbol} />
-            <p className="bg-white shadow rounded text-medium font-medium text-gray-900 p-3 mt-1 m-4">
+            <p className=" shadow rounded text-medium font-medium border border-gray-500 p-3 mt-1 m-4">
               {company.description}
             </p>
           </CompanyDashboard>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "./logo.png";
+import logo from "./logo2.png";
 import "./Navbar.css";
 import { useAuth } from "../../Context/useAuth";
 
@@ -34,7 +34,7 @@ const Navbar = ({ theme }: INavBarProps) => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-20">
           <Link to="/">
-            <img src={logo} alt="" />
+            <img className=" w-16 rounded-lg " src={logo} alt="" />
           </Link>
           <div className="hidden font-bold lg:flex">
             <Link

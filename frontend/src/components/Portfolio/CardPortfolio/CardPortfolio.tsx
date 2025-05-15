@@ -10,11 +10,11 @@ interface Props {
 
 const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: Props) => {
   return (
-    <div className="border-4 border-gray-400 flex flex-col p-6 space-y-4 text-center rounded-lg w-full max-w-sm shadow-lg bg-white">
+    <div className="border-4 border-gray-400 flex flex-col p-6 space-y-4 text-center rounded-lg w-full max-w-sm shadow-lg ">
     {/* Company Name & Symbol */}
     <Link
       to={`/company/${portfolioValue.symbol}/company-profile`}
-      className="pt-4 text-xl font-bold text-blue-600 hover:underline"
+      className="pt-4 text-xl font-bold rounded-lg text-blue-400 hover:text-blue-600  hover:underline"
     >
       {portfolioValue.companyName} ({portfolioValue.symbol})
     </Link>
