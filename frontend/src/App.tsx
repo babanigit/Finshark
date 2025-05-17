@@ -17,9 +17,11 @@ const App = () => {
   const [themeState, setThemeState] = useState<string>("dark");
 
   return (
-    <>
+  
       <div
-        style={{
+      className="h-100"
+      style={{
+        minHeight: "100vh", // or height: "100vh"
           backgroundColor: themes[themeState].body,
           color: themes[themeState].text,
           borderColor: themes[themeState].text,
@@ -35,7 +37,7 @@ const App = () => {
           </SetThemeContext.Provider>
         </ThemeProvider>
       </div>
-    </>
+  
   );
 };
 
