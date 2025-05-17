@@ -10,7 +10,7 @@ interface Props {
 const ListPortfolio = ({ portfolioValues = [], onPortfolioDelete }: Props) => {
   return (
     <section id="portfolio">
-      <h2 className="mb-3 mt-3 text-3xl font-semibold text-center md:text-4xl">
+      <h2 className=" mb-3 mt-3 text-3xl font-semibold text-center md:text-4xl">
         My Portfolio
       </h2>
       <div className="container mx-auto px-4">

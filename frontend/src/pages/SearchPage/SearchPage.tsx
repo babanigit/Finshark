@@ -56,7 +56,7 @@ const SearchPage = () => {
         if (res) {
           toast.success("Stock added to portfolio!");
           getPortfolio();
-          setSearch("")
+          setSearch("");
         }
       })
       .catch((e) => {
@@ -113,6 +113,8 @@ const SearchPage = () => {
         portfolioValues={portfolioValues!}
         onPortfolioDelete={onPortfolioDelete}
       />
+
+      <br />
     </>
   );
 };

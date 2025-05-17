@@ -31,9 +31,9 @@ const RegisterPage = () => {
   return (
     <section className=" ">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mb-20 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full  rounded-lg shadow dark:border md:mb-20 sm:max-w-md xl:p-0  dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl dark:text-white">
+            <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl ">
               Sign in to your account
             </h1>
             <form
@@ -43,34 +43,30 @@ const RegisterPage = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium  dark:text-white"
+                  className="block mb-2 text-sm font-medium  "
                 >
                   Email
                 </label>
                 <input
                   type="text"
                   id="email"
-                  className=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Email"
                   {...register("email")}
                 />
-                {errors.email ? (
-                  <p className="">{errors.email.message}</p>
-                ) : (
-                  ""
-                )}
+                {errors.email ? <p className="">{errors.email.message}</p> : ""}
               </div>
               <div>
                 <label
                   htmlFor="username"
-                  className="block mb-2 text-sm font-medium  dark:text-white"
+                  className="block mb-2 text-sm font-medium  "
                 >
                   Username
                 </label>
                 <input
                   type="text"
                   id="username"
-                  className=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Username"
                   {...register("userName")}
                 />
@@ -83,7 +79,7 @@ const RegisterPage = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium  dark:text-white"
+                  className="block mb-2 text-sm font-medium  "
                 >
                   Password
                 </label>
@@ -91,7 +87,7 @@ const RegisterPage = () => {
                   type="password"
                   id="password"
                   placeholder="••••••••"
-                  className="border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   {...register("password")}
                 />
                 {errors.password ? (
