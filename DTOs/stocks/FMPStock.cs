@@ -11,8 +11,8 @@ namespace Finshark.DTOs.stocks
         public double? price { get; set; }              // nullable
         public double? beta { get; set; }
         public int? volAvg { get; set; }
-        public long? mktCap { get; set; }
-        public double? lastDiv { get; set; }
+        public long? marketCap { get; set; }
+        public double? lastDividend { get; set; }
         public string? range { get; set; }
         public double? changes { get; set; }
         public string? companyName { get; set; }

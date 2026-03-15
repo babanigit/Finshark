@@ -35,7 +35,8 @@ namespace Finshark.Services
                     return null;
                 }
 
-                var url = $"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={apiKey}";
+                // var url = $"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={apiKey}";
+                var url = $"https://financialmodelingprep.com/stable/profile?symbol={symbol}&apikey={apiKey}";
                 Console.WriteLine($"🌐 Fetching: {url}");
 
                 var result = await _httpClient.GetAsync(url);

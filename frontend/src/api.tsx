@@ -19,11 +19,11 @@ const apiKey: string = import.meta.env.VITE_FMI_API_KEY;
 if (!apiKey) {
   console.error("API key is missing!");
 }
-
+//https://financialmodelingprep.com/stable/search-symbol?query=tata&limit=10&exchange=NASDAQ&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj
 export const searchCompanies = async (query: string) => {
   try {
     const data = await axios.get<SearchResponse>(
-      `https://financialmodelingprep.com/api/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/search-symbol?query=${query}&limit=10&exchange=NASDAQ&apikey=${apiKey}`
     );
     return data;
   } catch (error) {
@@ -40,7 +40,7 @@ export const searchCompanies = async (query: string) => {
 export const getCompanyProfile = async (query: string) => {
   try {
     const data = await axios.get<CompanyProfile[]>(
-      `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/profile/${query}?apikey=${apiKey}`
     );
     return data;
   } catch (error: any) {
@@ -51,7 +51,7 @@ export const getCompanyProfile = async (query: string) => {
 export const getKeyMetrics = async (query: string) => {
   try {
     const data = await axios.get<CompanyKeyMetrics[]>(
-      `https://financialmodelingprep.com/api/v3/key-metrics-ttm/${query}?limit=40&apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/key-metrics-ttm/${query}?limit=40&apikey=${apiKey}`
     );
     return data;
   } catch (error: any) {
@@ -62,7 +62,7 @@ export const getKeyMetrics = async (query: string) => {
 export const getIncomeStatement = async (query: string) => {
   try {
     const data = await axios.get<CompanyIncomeStatement[]>(
-      `https://financialmodelingprep.com/api/v3/income-statement/${query}?limit=50&apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/income-statement/${query}?limit=50&apikey=${apiKey}`
     );
     return data;
   } catch (error: any) {
@@ -73,7 +73,7 @@ export const getIncomeStatement = async (query: string) => {
 export const getBalanceSheet = async (query: string) => {
   try {
     const data = await axios.get<CompanyBalanceSheet[]>(
-      `https://financialmodelingprep.com/api/v3/balance-sheet-statement/${query}?limit=20&apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/balance-sheet-statement/${query}?limit=20&apikey=${apiKey}`
     );
     return data;
   } catch (error: any) {
@@ -84,7 +84,7 @@ export const getBalanceSheet = async (query: string) => {
 export const getCashFlow = async (query: string) => {
   try {
     const data = await axios.get<CompanyCashFlow[]>(
-      `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=100&apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/cash-flow-statement/${query}?limit=100&apikey=${apiKey}`
     );
     return data;
   } catch (error: any) {
@@ -106,7 +106,7 @@ export const getCompData = async (query: string) => {
 export const getTenK = async (query: string) => {
   try {
     const data = await axios.get<CompanyTenK[]>(
-      `https://financialmodelingprep.com/api/v3/sec_filings/${query}?type=10-K&page=0&apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/sec_filings/${query}?type=10-K&page=0&apikey=${apiKey}`
     );
     return data;
   } catch (error: any) {
@@ -117,7 +117,7 @@ export const getTenK = async (query: string) => {
 export const getHistoricalDividend = async (query: string) => {
   try {
     const data = await axios.get<CompanyHistoricalDividend>(
-      `https://financialmodelingprep.com/api/v3/historical-price-full/stock_dividend/${query}?apikey=${apiKey}`
+      `https://financialmodelingprep.com/stable/historical-price-full/stock_dividend/${query}?apikey=${apiKey}`
     );
     return data;
   } catch (error: any) {

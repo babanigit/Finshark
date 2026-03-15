@@ -1,0 +1,3 @@
+VITE_FMI_API_KEY=key_here
+# VITE_BACKEND_API_URL=http://localhost:5222/api/api/
+VITE_BACKEND_API_URL=/api/

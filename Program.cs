@@ -26,7 +26,16 @@ Console.WriteLine($"✅ Connection String is: {connStr}");
 // Add services to the container.
 builder.Services.AddControllers();
 
-builder.Services.AddCors();
+// builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
@@ -37,7 +46,7 @@ builder.Services.AddRazorPages();
 
 // Register ApplicationDbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connStr)
+    options.UseSqlServer(connStr) // UseSqlServer,  UseNpgsql
            .EnableSensitiveDataLogging()
            .LogTo(Console.WriteLine, LogLevel.Information)
 );
@@ -88,17 +97,17 @@ builder.Services.AddHttpClient<IFMPService, FMPService>();
 
 var app = builder.Build();
 
-var reactPath = Path.Combine(Directory.GetCurrentDirectory(), "frontend", "dist");
+// var reactPath = Path.Combine(Directory.GetCurrentDirectory(), "frontend", "dist");
 
-Console.WriteLine(" ✅  Resolved path: " + reactPath);
+// Console.WriteLine(" ✅  Resolved path: " + reactPath);
 
-if (!Directory.Exists(reactPath))
-{
-    Console.WriteLine($" ✅ Serving react from: {reactPath}");
-    Console.WriteLine(" ✅ Dist folder exists? " + Directory.Exists(reactPath));
-    Console.WriteLine(" ✅ Index.html exists? " + File.Exists(Path.Combine(reactPath, "index.html")));
-    return;
-}
+// if (!Directory.Exists(reactPath))
+// {
+//     Console.WriteLine($" ✅ Serving react from: {reactPath}");
+//     Console.WriteLine(" ✅ Dist folder exists? " + Directory.Exists(reactPath));
+//     Console.WriteLine(" ✅ Index.html exists? " + File.Exists(Path.Combine(reactPath, "index.html")));
+//     return;
+// }
 
 
 // Migrate database automatically
@@ -116,26 +125,28 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// Serve default files (like index.html)
-app.UseDefaultFiles(new DefaultFilesOptions
-{
-    FileProvider = new PhysicalFileProvider(reactPath),
-    RequestPath = ""
-});
+// // Serve default files (like index.html)
+// app.UseDefaultFiles(new DefaultFilesOptions
+// {
+//     FileProvider = new PhysicalFileProvider(reactPath),
+//     RequestPath = ""
+// });
 
-// Serve static files (js, css, images)
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(reactPath),
-    RequestPath = ""
-});
+// // Serve static files (js, css, images)
+// app.UseStaticFiles(new StaticFileOptions
+// {
+//     FileProvider = new PhysicalFileProvider(reactPath),
+//     RequestPath = ""
+// });
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+
 
 app.UseRouting();
 
+// app.UseCors();
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -147,12 +158,12 @@ app.MapControllers();
 app.MapGet("/api/status", () => "API is live");
 
 
-// This should come after all other route mappings
-// This is important to serve index.html for react routing
-app.MapFallbackToFile("index.html", new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(reactPath)
-});
+// // This should come after all other route mappings
+// // This is important to serve index.html for react routing
+// app.MapFallbackToFile("index.html", new StaticFileOptions
+// {
+//     FileProvider = new PhysicalFileProvider(reactPath)
+// });
 
 
 app.Run();

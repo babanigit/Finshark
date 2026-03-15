@@ -1,0 +1,5 @@
+FMPKey=key_here
+JWT__Audience=http://localhost:5222
+JWT__Issuer=http://localhost:5222
+JWT__SigningKey=key_here
+
