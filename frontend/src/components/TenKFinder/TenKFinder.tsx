@@ -25,7 +25,7 @@ const TenKFinder = ({ ticker }: Props) => {
         })
       ) : (
         <>
-          <Spinner />
+          <Spinner /> hello 6
         </>
       )}
     </div>

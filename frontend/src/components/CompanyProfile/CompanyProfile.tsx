@@ -84,24 +84,27 @@ const CompanyProfile = () => {
   const [companyData, setCompanyData] = useState<CompanyKeyMetrics>();
   useEffect(() => {
     const getCompanyKeyRatios = async () => {
+      console.log("getCompanyKeyRatios() , ticker : ", ticker)
       const value = await getKeyMetrics(ticker);
       setCompanyData(value?.data[0]);
-      // console.log("companyData", companyData);
+      console.log("companyData", companyData);
     };
     getCompanyKeyRatios();
   }, []);
   return (
     <>
-      {companyData ? (
+      {/* {companyData ? (
         <>
           <RatioList config={tableConfig} data={companyData} />
-          {/* <StockComment stockSymbol={ticker} /> */}
+          <StockComment stockSymbol={ticker} />
         </>
       ) : (
         <>
-          <Spinner />
+          <Spinner /> hello 3
         </>
-      )}
+      )} */}
+
+      <div> hello getKeyMetrics</div>
     </>
   );
 };

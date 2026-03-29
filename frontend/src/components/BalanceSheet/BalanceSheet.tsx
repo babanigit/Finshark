@@ -94,7 +94,7 @@ const BalanceSheet = () => {
         <RatioList config={config} data={companyData} />
       ) : (
         <>
-          <Spinner />
+          <Spinner /> hello 1
         </>
       )}
     </>

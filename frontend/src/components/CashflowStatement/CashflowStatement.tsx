@@ -19,13 +19,13 @@ const config = [
   {
     label: "Investing Cashflow",
     render: (company: CompanyCashFlow) =>
-      formatLargeMonetaryNumber(company.netCashUsedForInvestingActivites),
+      formatLargeMonetaryNumber(company.netCashProvidedByInvestingActivities),
   },
   {
     label: "Financing Cashflow",
     render: (company: CompanyCashFlow) =>
       formatLargeMonetaryNumber(
-        company.netCashUsedProvidedByFinancingActivities
+        company.netCashProvidedByFinancingActivities
       ),
   },
   {
@@ -41,7 +41,7 @@ const config = [
   {
     label: "Issuance Of Stock",
     render: (company: CompanyCashFlow) =>
-      formatLargeMonetaryNumber(company.commonStockIssued),
+      formatLargeMonetaryNumber(company.commonStockIssuance),
   },
   {
     label: "Free Cash Flow",
@@ -55,7 +55,9 @@ const CashflowStatement = () => {
   const [cashFlowData, setCashFlowData] = useState<CompanyCashFlow[]>();
   useEffect(() => {
     const getRatios = async () => {
+      console.log("the ticker is CashflowStatement : ", ticker)
       const result = await getCashFlow(ticker);
+      console.log(" CashflowStatement : result : ", result)
       setCashFlowData(result!.data);
     };
     getRatios();
@@ -64,7 +66,7 @@ const CashflowStatement = () => {
     <Table config={config} data={cashFlowData}></Table>
   ) : (
     <>
-      <Spinner />
+      <Spinner /> hello spinner 2
     </>
   );
 };

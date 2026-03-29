@@ -44,6 +44,46 @@ export interface CompanyProfile {
   isFund: boolean;
 }
 
+
+export interface CompanyProfile2 {
+  address: string;
+  averageVolume: number;
+  beta: number;
+  ceo: string;
+  change: number;
+  changePercentage: number;
+  cik: string;
+  city: string;
+  companyName: string;
+  country: string;
+  currency: string;
+  cusip: string;
+  defaultImage: boolean;
+  description: string;
+  exchange: string;
+  exchangeFullName: string;
+  fullTimeEmployees: string;
+  image: string;
+  industry: string;
+  ipoDate: string;
+  isActivelyTrading: boolean;
+  isAdr: boolean;
+  isEtf: boolean;
+  isFund: boolean;
+  isin: string;
+  lastDividend: number;
+  marketCap: number;
+  phone: string;
+  price: number;
+  range: string;
+  sector: string;
+  state: string;
+  symbol: string;
+  volume: number;
+  website: string;
+  zip: string;
+}
+
 export interface CompanyKeyRatios {
   dividendYielTTM: number;
   dividendYielPercentageTTM: number;
@@ -204,14 +244,57 @@ export interface CompanyBalanceSheet {
 }
 
 export interface CompanyCashFlow {
+  // date: string;
+  // symbol: string;
+  // reportedCurrency: string;
+  // cik: string;
+  // fillingDate: string;
+  // acceptedDate: string;
+  // calendarYear: string;
+  // period: string;
+  // netIncome: number;
+  // depreciationAndAmortization: number;
+  // deferredIncomeTax: number;
+  // stockBasedCompensation: number;
+  // changeInWorkingCapital: number;
+  // accountsReceivables: number;
+  // inventory: number;
+  // accountsPayables: number;
+  // otherWorkingCapital: number;
+  // otherNonCashItems: number;
+  // netCashProvidedByOperatingActivities: number;
+  // investmentsInPropertyPlantAndEquipment: number;
+  // acquisitionsNet: number;
+  // purchasesOfInvestments: number;
+  // salesMaturitiesOfInvestments: number;
+  // otherInvestingActivites: number;
+  // netCashUsedForInvestingActivites: number;
+  // debtRepayment: number;
+  // commonStockIssued: number;
+  // commonStockRepurchased: number;
+  // dividendsPaid: number;
+  // otherFinancingActivites: number;
+  // netCashUsedProvidedByFinancingActivities: number;
+  // effectOfForexChangesOnCash: number;
+  // netChangeInCash: number;
+  // cashAtEndOfPeriod: number;
+  // cashAtBeginningOfPeriod: number;
+  // operatingCashFlow: number;
+  // capitalExpenditure: number;
+  // freeCashFlow: number;
+  // link: string;
+  // finalLink: string;
+  // General Info
   date: string;
   symbol: string;
   reportedCurrency: string;
   cik: string;
-  fillingDate: string;
+  filingDate: string;
   acceptedDate: string;
-  calendarYear: string;
+  fiscalYear: string;
   period: string;
+
+  // Operating Activities
   netIncome: number;
   depreciationAndAmortization: number;
   deferredIncomeTax: number;
@@ -223,27 +306,42 @@ export interface CompanyCashFlow {
   otherWorkingCapital: number;
   otherNonCashItems: number;
   netCashProvidedByOperatingActivities: number;
+
+  // Investing Activities
   investmentsInPropertyPlantAndEquipment: number;
   acquisitionsNet: number;
   purchasesOfInvestments: number;
   salesMaturitiesOfInvestments: number;
-  otherInvestingActivites: number;
-  netCashUsedForInvestingActivites: number;
-  debtRepayment: number;
-  commonStockIssued: number;
+  otherInvestingActivities: number;
+  netCashProvidedByInvestingActivities: number;
+
+  // Financing Activities
+  netDebtIssuance: number;
+  longTermNetDebtIssuance: number;
+  shortTermNetDebtIssuance: number;
+  netStockIssuance: number;
+  netCommonStockIssuance: number;
+  commonStockIssuance: number;
   commonStockRepurchased: number;
-  dividendsPaid: number;
-  otherFinancingActivites: number;
-  netCashUsedProvidedByFinancingActivities: number;
+  netPreferredStockIssuance: number;
+  netDividendsPaid: number;
+  commonDividendsPaid: number;
+  preferredDividendsPaid: number;
+  otherFinancingActivities: number;
+  netCashProvidedByFinancingActivities: number;
+
+  // Cash Summary
   effectOfForexChangesOnCash: number;
   netChangeInCash: number;
   cashAtEndOfPeriod: number;
   cashAtBeginningOfPeriod: number;
+
+  // Key Metrics
   operatingCashFlow: number;
   capitalExpenditure: number;
   freeCashFlow: number;
-  link: string;
-  finalLink: string;
+  incomeTaxesPaid: number;
+  interestPaid: number;
 }
 
 export interface CompanyKeyMetrics {

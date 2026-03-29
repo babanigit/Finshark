@@ -92,7 +92,7 @@ const IncomeStatement = () => {
         <Table config={configs} data={incomeStatement} />
       ) : (
         <>
-          <Spinner />
+          <Spinner /> hello 4
         </>
       )}
     </>

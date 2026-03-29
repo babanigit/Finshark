@@ -11,8 +11,8 @@
   "AllowedHosts": "*",
   "FMPKey": "key_here",
   "JWT": {
-    "Issuer": "http://localhost:5246",
-    "Audience": "http://localhost:5246",
+    "Issuer": "",
+    "Audience": "",
     "SigningKey": "key_here"
   }
 }
