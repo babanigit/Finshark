@@ -3,38 +3,38 @@ import { useOutletContext } from "react-router-dom";
 import { getHistoricalDividend } from "../../api";
 // import Spinner from "../Spinners/Spinner";
 import SimpleLineChart from "../SimpleLineChart/SimpleLineChart";
-import { Dividend } from "../../company";
+import {
+  HistoricalPriceEntry,
+  HistoricalPriceResponse,
+} from "../../Models/Historic_Divident";
+// import { Dividend } from "../../company";
 
 const HistoricalDividend = () => {
   const ticker = useOutletContext<string>();
-  const [dividend, setDividend] = useState<Dividend[]>();
+  const [dividend, setDividend] = useState<HistoricalPriceEntry[]>();
   useState<boolean>(false);
   useEffect(() => {
-
     const fetchHistoricalDividend = async () => {
-      console.log("getHistoricalDividend, ticker : ",ticker)
       const value = await getHistoricalDividend(ticker);
 
-      console.log("fetchHistoricalDividend(), value :  ", value);
 
       setDividend(
-        value?.data.slice(0, 18).sort(function (a, b) {
+        value?.data.slice(0, 300).sort(function (a, b) {
           const c = new Date(a.date);
           const d = new Date(b.date);
           return c.getTime() - d.getTime();
-        })
+        }),
 
-            // value?.data.historical
+        //  value?.data
       );
-      console.log("✅ the dividend is:- ", dividend)
     };
     fetchHistoricalDividend();
-    
+
   }, []);
   return (
     <>
-      {dividend && dividend.length > 0 && dividend !== undefined ? (
-        <SimpleLineChart data={dividend} xAxis="label" dataKey="dividend" />
+      {dividend && dividend.length > 0 ? (
+        <SimpleLineChart data={dividend} />
       ) : (
         <h1 className="ml-3">Company does not have a historical dividend!</h1>
       )}

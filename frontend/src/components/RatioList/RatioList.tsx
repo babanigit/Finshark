@@ -1,9 +1,11 @@
+import { CompanyKeyMetrics } from "../../company";
+
 type Props = {
   config: any;
-  data: any;
+  data: CompanyKeyMetrics | undefined;
 };
 
-const RatioList = ({ config = [], data = [] }: Props) => {
+const RatioList = ({ config = [], data }: Props) => {
   const renderedCells = config.map((row: any) => {
     return (
       <li className="py-6 sm:py-6">

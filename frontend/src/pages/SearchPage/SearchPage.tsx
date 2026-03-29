@@ -84,7 +84,6 @@ const SearchPage = () => {
     if (search.length !== 0) {
       result = await searchCompanies(search);
     }
-    console.log("the search result is:- ", result);
     //setServerError(result.data);
     if (typeof result === "string") {
       setServerError(result);

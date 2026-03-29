@@ -7,7 +7,7 @@ import CompanyDashboard from "../../components/CompanyDashboard/CompanyDashboard
 import Tile from "../../components/Tile/Tile";
 import Spinner from "../../components/Spinners/Spinner";
 import CompFinder from "../../components/CompFinder/CompFinder";
-import TenKFinder from "../../components/TenKFinder/TenKFinder";
+// import TenKFinder from "../../components/TenKFinder/TenKFinder";
 import { CompanyProfile2 } from "../../company";
 
 const CompanyPage = () => {
@@ -17,12 +17,11 @@ const CompanyPage = () => {
 
   useEffect(() => {
     const getProfileInit = async () => {
-      console.log("ticker is : ", ticker);
       const result = await getCompanyProfile(ticker!);
-      console.log("result is :- ", result)
       setCompany(result?.data[0]);
     };
     getProfileInit();
+
   }, []);
 
   return (
@@ -36,7 +35,7 @@ const CompanyPage = () => {
             {/* <Tile title="DCF" subTitle={"$" + company.dcf.toString()} /> */}
             <Tile title="Sector" subTitle={company.sector} />
             <CompFinder ticker={company.symbol} />
-            <TenKFinder ticker={company.symbol} />
+            {/* <TenKFinder ticker={company.symbol} /> */}
             <p className=" shadow rounded text-medium font-medium border border-gray-500 p-3 mt-1 m-4">
               {company.description}
             </p>

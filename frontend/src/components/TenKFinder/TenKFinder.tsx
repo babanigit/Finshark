@@ -16,6 +16,9 @@ const TenKFinder = ({ ticker }: Props) => {
       setCompanyData(value?.data);
     };
     getTenKData();
+
+    console.log("companyData,TenKFinder : ",companyData)
+
   }, [ticker]);
   return (
     <div className="inline-flex rounded-md shadow-lg m-4" role="group">

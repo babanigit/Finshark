@@ -8,17 +8,16 @@ type Props = {
 };
 
 const CompFinder = ({ ticker }: Props) => {
-  const [companyData, setCompanyData] = useState<CompanyCompData>();
+  const [companyData, setCompanyData] = useState<CompanyCompData[]>();
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const getComps = async () => {
       try {
         const value = await getCompData(ticker);
-        console.log(" the compFinder1 error is:- ", value);
-
         if (value?.data[0]) {
-          setCompanyData(value.data[0]);
+          setCompanyData(value.data);
+          console.log("companyData ::00 , ", companyData);
           setError(""); // Clear any previous errors
         } else {
           setError("Company data not Available ");
@@ -36,14 +35,18 @@ const CompFinder = ({ ticker }: Props) => {
 
   return (
     <div className="inline-flex rounded-md shadow-sm m-4" role="group">
-      {Array.isArray(companyData?.peersList) && companyData ? (
-        companyData?.peersList.map((ticker) => {
-          return <CompFinderItem key={ticker} ticker={ticker} />;
+      {companyData ? (
+        companyData.map((item) => {
+          return <CompFinderItem key={item.symbol} ticker={item.symbol} />;
         })
       ) : (
         <div className="text-black">Loading...</div>
       )}
     </div>
+
+    // <div>
+    //   hello there
+    // </div>
   );
 };
 

@@ -55,9 +55,7 @@ const CashflowStatement = () => {
   const [cashFlowData, setCashFlowData] = useState<CompanyCashFlow[]>();
   useEffect(() => {
     const getRatios = async () => {
-      console.log("the ticker is CashflowStatement : ", ticker)
       const result = await getCashFlow(ticker);
-      console.log(" CashflowStatement : result : ", result)
       setCashFlowData(result!.data);
     };
     getRatios();
