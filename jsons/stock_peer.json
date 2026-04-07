@@ -1,0 +1,56 @@
+[
+  {
+    "symbol": "GOOGL",
+    "companyName": "Alphabet Inc.",
+    "price": 274.34,
+    "mktCap": 3318691135276
+  },
+  {
+    "symbol": "META",
+    "companyName": "Meta Platforms, Inc.",
+    "price": 525.72,
+    "mktCap": 1325336423663
+  },
+  {
+    "symbol": "MSFT",
+    "companyName": "Microsoft Corporation",
+    "price": 356.77,
+    "mktCap": 2649242015100
+  },
+  {
+    "symbol": "NVDA",
+    "companyName": "NVIDIA Corporation",
+    "price": 167.52,
+    "mktCap": 4071573684095
+  },
+  {
+    "symbol": "NXT",
+    "companyName": "Nextpower Inc.",
+    "price": 120.03,
+    "mktCap": 17821555435
+  },
+  {
+    "symbol": "RIME",
+    "companyName": "Algorhythm Holdings, Inc.",
+    "price": 1.1,
+    "mktCap": 2993958
+  },
+  {
+    "symbol": "SONY",
+    "companyName": "Sony Group Corporation",
+    "price": 19.91,
+    "mktCap": 118824343385
+  },
+  {
+    "symbol": "TBCH",
+    "companyName": "Turtle Beach Corporation",
+    "price": 10.23,
+    "mktCap": 200508450
+  },
+  {
+    "symbol": "TSM",
+    "companyName": "Taiwan Semiconductor Manufacturing Company Limited",
+    "price": 326.74,
+    "mktCap": 1694640111220
+  }
+]

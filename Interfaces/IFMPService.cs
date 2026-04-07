@@ -9,5 +9,9 @@ namespace Finshark.Interfaces
     public interface IFMPService
     {
         Task<Stock> FindStockBySymbolAsync(string symbol);
+        Task<KeyMetrics[]> GetFmpBySymbolAsync(string symbol, string url);
+        Task<KeyMetrics[]> GetKeyMetricsBySymbolAsync(string symbol, string url);
+
+
     }
 }
