@@ -377,6 +377,28 @@ namespace Finshark.Models
     }
 
 
+        public class SecFiling
+    {
+        public int Id { get; set; }
+        public string Symbol { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Cik { get; set; } = string.Empty;
+        public string SicCode { get; set; } = string.Empty;
+        public string IndustryTitle { get; set; } = string.Empty;
+        public string BusinessAddress { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
+    }
+
+
+    public class StockPeer
+    {
+        public int Id { get; set; }
+        public string Symbol { get; set; } = string.Empty;
+        public string CompanyName { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public long MktCap { get; set; }
+    }
+
     //     public class CompanyInfo
     // {
     //     public int Id { get; set; }

@@ -62,6 +62,76 @@ namespace Finshark.Services
             }
         }
 
+        public async Task<BalanceSheetStatement[]> GetBalanceSheetStatementBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<BalanceSheetStatement[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
+        public async Task<CashFlowStatement[]> GetCashFlowStatementBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<CashFlowStatement[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
         public async Task<KeyMetrics[]> GetFmpBySymbolAsync(string symbol, string url)
         {
             try
@@ -97,6 +167,76 @@ namespace Finshark.Services
             }
         }
 
+        public async Task<HistoricalDividend[]> GetHistoricalPriceFullBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<HistoricalDividend[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
+        public async Task<IncomeStatement[]> GetIncomeStatementBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<IncomeStatement[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
         public async Task<KeyMetrics[]> GetKeyMetricsBySymbolAsync(string symbol, string url)
         {
             try
@@ -105,6 +245,146 @@ namespace Finshark.Services
                 Console.WriteLine($"Reading from file: {jsonFilePath}");
                 var content = await File.ReadAllTextAsync(jsonFilePath);
                 var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
+        public async Task<CompanyProfile[]> GetProfileBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<CompanyProfile[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
+        public async Task<StockSearch[]> GetSearchDataBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<StockSearch[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
+        public async Task<SecFiling[]> GetSecFilingsBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<SecFiling[]>(content);
+                return metrics!;
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     Console.WriteLine($"📄 Response: {content}");
+                //     var metrics = JsonConvert.DeserializeObject<KeyMetrics[]>(content);
+                //     return metrics!;
+                // }
+                // return null!;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine($"🔥 Exception: {ex.Message}");
+                return null!;
+            }
+        }
+
+        public async Task<StockPeer[]> GetStockPeersBySymbolAsync(string symbol, string url)
+        {
+            try
+            {
+                var jsonFilePath = url;
+                Console.WriteLine($"Reading from file: {jsonFilePath}");
+                var content = await File.ReadAllTextAsync(jsonFilePath);
+                var metrics = JsonConvert.DeserializeObject<StockPeer[]>(content);
                 return metrics!;
 
                 // var apiKey = Environment.GetEnvironmentVariable("FMPKey");

@@ -1,0 +1,1136 @@
+{
+  "info": {
+    "_postman_id": "9a3a8f06-a59b-4b86-9eaf-9603944ccfa8",
+    "name": "finshark",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "45836350"
+  },
+  "item": [
+    {
+      "name": "indiafirstlife Copy",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "apitpa@123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "TPAAPI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/pdf",
+            "type": "text"
+          },
+          {
+            "key": "Content-Disposition",
+            "value": "form-data; name=\\\"07550600008611\\\"; filename=\\\"07550600008611_1580508.pdf\\\"",
+            "type": "text"
+          },
+          {
+            "key": "Content-MD5",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "",
+              "value": "{\"esbOmniReq\":{\"templateName\":\"New Business Non AAG\",\"fieldName\":\"Application_number,FPC_Code\",\"fieldValue\":\"89980600002197,STH01\",\"documentList\":\"E:/OmniDocs/generic_omni/Physical Medical Report.pdf\",\"docList\":\"Physical Medical\",\"source\":\"PORTAL\"}}",
+              "type": "text",
+              "uuid": "d7afdaec-fb1c-4ef5-95ec-14b480c0db49"
+            },
+            {
+              "key": "89980600002197",
+              "type": "file",
+              "uuid": "7e76833b-180a-4ba9-9040-d9abff8588c3",
+              "src": "///192.168.50.12/d$/Documents/NewPIMSone/PPMC/CaseDocuments/Merge Reports/IFL/IFL/2026/March/89980600002197_1602662.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://apig.indiafirstlife.com/api_genericdoc_omni/",
+          "protocol": "https",
+          "host": [
+            "apig",
+            "indiafirstlife",
+            "com"
+          ],
+          "path": [
+            "api_genericdoc_omni",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api status",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Username\":\"\",\r\n    \"Email\":\"\",\r\n    \"Password\":\"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\" :\"eren3\",\r\n\t\"email\": \"eren3@gmail.com\",\r\n    \"password\": \"erenAniket07@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/api/account/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "api",
+            "account",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Username\" :\"eren3\",\r\n\t// \"Email\": \"eren2@gmail.com\",\r\n    \"Password\": \"erenAniket07@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/api/account/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "api",
+            "account",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "test fmp dotnet",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/testfmp",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "testfmp"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getfmp dotnet",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    // \"Url\": \"jsons/key_metrics.json\"\r\n    // \"Url\": \"jsons/balance_sheet_statement.json\"\r\n    // \"Url\": \"jsons/cash_flow_statement.json\"\r\n    // \"Url\": \"jsons/historicalDivident.json\"\r\n    \"Url\": \"jsons/income_statement.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/getfmp",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "getfmp"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getfmp key_matrix",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/key_metrics.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/getkeymetrics",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "getkeymetrics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getfmp searchCompany",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/search_data.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/searchcompany",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "searchcompany"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "profile",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/profile.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/profile",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "incomestatement",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/income_statement.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/incomestatement",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "incomestatement"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "balancesheetstatement",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/balance_sheet_statement.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/incomestatement",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "incomestatement"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "cashflowstatement",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/cash_flow_statement.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/cashflowstatement",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "cashflowstatement"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "stockpeers",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/stock_peer.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/stockpeers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "stockpeers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "secfilings",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/sec_filings.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/secfilings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "secfilings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "historicalpricefull",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Symbol\": \"AAPL\",\r\n    \"Url\": \"jsons/historicalDivident.json\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/fmp/historicalpricefull",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "fmp",
+            "historicalpricefull"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get portfolio",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzkxNzM1NiwiZXhwIjoxNzc0NTIyMTU2LCJpYXQiOjE3NzM5MTczNTYsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.oeWFlBRlVlTMtuFu3KSMb-zEmek84j-gmdyeszu5mE7xz5WO9IZOIYZFkhgz9U5NkK8KL_C4EYn4LAehTDJ7Kg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Username\" :\"eren3\",\r\n\t// \"Email\": \"eren2@gmail.com\",\r\n    \"Password\": \"erenAniket07@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/portfolio",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "portfolio"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post portfolio",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzkxNzM1NiwiZXhwIjoxNzc0NTIyMTU2LCJpYXQiOjE3NzM5MTczNTYsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.oeWFlBRlVlTMtuFu3KSMb-zEmek84j-gmdyeszu5mE7xz5WO9IZOIYZFkhgz9U5NkK8KL_C4EYn4LAehTDJ7Kg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5222/api/portfolio?symbol=AAPL",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "portfolio"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAPL"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get stock",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Username\" :\"eren3\",\r\n\t// \"Email\": \"eren2@gmail.com\",\r\n    \"Password\": \"erenAniket07@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/stock",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "stock"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "stock by id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Username\" :\"eren3\",\r\n\t// \"Email\": \"eren2@gmail.com\",\r\n    \"Password\": \"erenAniket07@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5222/api/stock/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5222",
+          "path": [
+            "api",
+            "stock",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Username\" :\"eren3\",\r\n\t// \"Email\": \"eren2@gmail.com\",\r\n    \"Password\": \"erenAniket07@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/search-symbol?query=tata&limit=10&exchange=NASDAQ&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "search-symbol"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "tata"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "exchange",
+              "value": "NASDAQ"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp Copy",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Username\" :\"eren3\",\r\n\t// \"Email\": \"eren2@gmail.com\",\r\n    \"Password\": \"erenAniket07@\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/search-symbol?query=AAPL&limit=10&exchange=NASDAQ&apikey={{fmp_api_key}}",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "search-symbol"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "AAPL"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "exchange",
+              "value": "NASDAQ"
+            },
+            {
+              "key": "apikey",
+              "value": "{{fmp_api_key}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp key_matrix",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/key-metrics?symbol=AAPL&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "key-metrics"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAPL"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp income-statement",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/income-statement?symbol=AAPL&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "income-statement"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAPL"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp balance-sheet-statement",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/balance-sheet-statement?symbol=AAPL&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "balance-sheet-statement"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAPL"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp cash-flow-statement",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/cash-flow-statement?symbol=AAL&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "cash-flow-statement"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAL"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp stock_peers",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/stock-peers?symbol=AAPL&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "stock-peers"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAPL"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp sec_filling",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/sec-filings-company-search/symbol?symbol=AAPL&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "sec-filings-company-search",
+            "symbol"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAPL"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get fmp historical-price-full",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyZW4zQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJlcmVuMyIsIm5iZiI6MTc3MzMyMTM0NCwiZXhwIjoxNzczOTI2MTQ0LCJpYXQiOjE3NzMzMjEzNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTIyMiJ9.nEd8HLhlVzJ7yG9HDmEvMrgqKpsuYz7V3FJrWxN2hrzVC5vlJQvSGfYIUigywd-PfkzfndlktcyAKx9R4fB3qQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://financialmodelingprep.com/stable/historical-price-eod/full?symbol=AAL&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj",
+          "protocol": "https",
+          "host": [
+            "financialmodelingprep",
+            "com"
+          ],
+          "path": [
+            "stable",
+            "historical-price-eod",
+            "full"
+          ],
+          "query": [
+            {
+              "key": "symbol",
+              "value": "AAL"
+            },
+            {
+              "key": "apikey",
+              "value": "vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "fmp_api_key",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

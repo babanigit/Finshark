@@ -63,6 +63,135 @@ namespace Finshark.Controllers
 
         }
 
+        [HttpPost("searchcompany")]
+        public async Task<IActionResult> SearchCompany([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetSearchDataBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
+
+        [HttpPost("profile")]
+        public async Task<IActionResult> Profile([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetProfileBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
+        [HttpPost("incomestatement")]
+        public async Task<IActionResult> IncomeStatement([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetIncomeStatementBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
+        [HttpPost("balancesheetstatement")]
+        public async Task<IActionResult> BalanceSheetStatement([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetBalanceSheetStatementBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
+        [HttpPost("cashflowstatement")]
+        public async Task<IActionResult> CashFlowStatement([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetCashFlowStatementBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
+        [HttpPost("stockpeers")]
+        public async Task<IActionResult> StockPeers([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetStockPeersBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
+        [HttpPost("secfilings")]
+        public async Task<IActionResult> SecFilings([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetSecFilingsBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
+        [HttpPost("historicalpricefull")]
+        public async Task<IActionResult> HistoricalPriceFull([FromBody] FmpDto fmpDto)
+        {
+            Console.WriteLine($"  {fmpDto.Symbol} ");
+            var data = await _fmpService.GetHistoricalPriceFullBySymbolAsync(fmpDto.Symbol!, fmpDto.Url!);
+            if (data == null)
+            {
+                return BadRequest("Not Found");
+            }
+            else
+            {
+                return Ok(data);
+            }
+
+        }
+
     }
 
 }
