@@ -18,7 +18,7 @@ namespace Finshark.Interfaces
         Task<CashFlowStatement[]> GetCashFlowStatementBySymbolAsync(string symbol, string url);
         Task<StockPeer[]> GetStockPeersBySymbolAsync(string symbol, string url);
         Task<SecFiling[]> GetSecFilingsBySymbolAsync(string symbol, string url);
-        Task<HistoricalDividend[]> GetHistoricalPriceFullBySymbolAsync(string symbol, string url);
+        Task<HistoricalPriceFull[]> GetHistoricalPriceFullBySymbolAsync(string symbol, string url);
 
     }
 }

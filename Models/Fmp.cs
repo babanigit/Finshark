@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Finshark.Models
 {
@@ -145,8 +146,13 @@ namespace Finshark.Models
         public long InterestPaid { get; set; }
     }
 
+    public class HistoricalPriceFullResponse
+    {
+        [JsonProperty("data")]
+        public HistoricalPriceFull[] Data { get; set; } = Array.Empty<HistoricalPriceFull>();
+    }
 
-    public class HistoricalDividend
+    public class HistoricalPriceFull
     {
         public int Id { get; set; }
         public string Symbol { get; set; } = string.Empty;
@@ -377,7 +383,7 @@ namespace Finshark.Models
     }
 
 
-        public class SecFiling
+    public class SecFiling
     {
         public int Id { get; set; }
         public string Symbol { get; set; } = string.Empty;
