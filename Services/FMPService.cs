@@ -206,6 +206,7 @@ namespace Finshark.Services
         {
             try
             {
+
                 var jsonFilePath = url;
                 Console.WriteLine($"Reading from file: {jsonFilePath}");
                 var content = await File.ReadAllTextAsync(jsonFilePath);
@@ -213,6 +214,41 @@ namespace Finshark.Services
                 var response = JsonConvert.DeserializeObject<HistoricalPriceFullResponse>(content);
 
                 return response?.Data ?? Array.Empty<HistoricalPriceFull>();
+
+
+                // var apiKey = Environment.GetEnvironmentVariable("FMPKey");
+                // if (string.IsNullOrEmpty(apiKey))
+                // {
+                //     Console.WriteLine("❌ FMPKey is missing!");
+                //     return null;
+                // }
+                // var full_url_link = $"{url}?symbol={symbol}&apikey={apiKey}";
+                // Console.WriteLine($"full_url_link  {full_url_link}");
+                // var result = await _httpClient.GetAsync(full_url_link);
+                // Console.WriteLine($"📥 Status: {result.StatusCode}");
+                // if (result.IsSuccessStatusCode)
+                // {
+                //     var content = await result.Content.ReadAsStringAsync();
+                //     // var response = JsonConvert.DeserializeObject<HistoricalPriceFullResponse>(content);
+                //     // return response?.Data ?? Array.Empty<HistoricalPriceFull>();
+                //     var trimmed = content.TrimStart();
+                //     // If it starts with '[' it's a plain array, if '{' it's a wrapped object
+                //     if (trimmed.StartsWith("["))
+                //     {
+                //         var results = JsonConvert.DeserializeObject<HistoricalPriceFull[]>(content);
+                //         return results ?? Array.Empty<HistoricalPriceFull>();
+                //     }
+                //     else
+                //     {
+                //         var response = JsonConvert.DeserializeObject<HistoricalPriceFullResponse>(content);
+                //         return response?.Data ?? Array.Empty<HistoricalPriceFull>();
+                //     }
+                // }
+                // else
+                // {
+                //     return null!;
+                // }
+                
             }
             catch (Exception e)
             {
