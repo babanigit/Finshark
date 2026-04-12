@@ -1,17 +1,17 @@
 import axios from "axios";
-import {
-  CompanyBalanceSheet,
-  CompanyCashFlow,
-  CompanyCompData,
-  CompanyIncomeStatement,
-  CompanyKeyMetrics,
-  CompanyProfile,
-  CompanySearch,
-  CompanyTenK,
-  CompanyHistoricalDividend,
-  CompanyProfile2,
-  // Dividend,
-} from "./company";
+// import {
+//   CompanyBalanceSheet,
+//   CompanyCashFlow,
+//   CompanyCompData,
+//   CompanyIncomeStatement,
+//   CompanyKeyMetrics,
+//   CompanyProfile,
+//   CompanySearch,
+//   CompanyTenK,
+//   CompanyHistoricalDividend,
+//   CompanyProfile2,
+//   // Dividend,
+// } from "./company";
 
 import search_data from "../src/jsons/search_data.json";
 import balance_sheet_statement from "../src/jsons/balance_sheet_statement.json";
@@ -23,24 +23,23 @@ import profile from "../src/jsons/profile.json";
 import stock_peer from "../src/jsons/stock_peer.json";
 import sec_filings from "../src/jsons/sec_filings.json";
 import { HistoricalPriceResponse } from "./Models/Historic_Divident";
+// import { CompanySearch } from "./company";
 
-export interface SearchResponse {
-  data: CompanySearch[];
-}
+// export interface SearchResponse {
+//   data: CompanySearch[];
+// }
 const apiKey: string = import.meta.env.VITE_FMI_API_KEY;
 if (!apiKey) {
   console.error("API key is missing!");
 }
 
-
-
-export interface Iapistatus{
-  message:string;
+export interface Iapistatus {
+  message: string;
 }
-
 
 export const apistatus = async (query: string) => {
   try {
+    console.log("apistatus called with query: ", query);
     const data = await axios.get<Iapistatus>(
       `http://localhost:5222/api/status`,
     );
@@ -57,10 +56,10 @@ export const apistatus = async (query: string) => {
   }
 };
 
-
 //https://financialmodelingprep.com/stable/search-symbol?query=tata&limit=10&exchange=NASDAQ&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj
 export const searchCompanies = async (query: string) => {
   try {
+    console.log("searchCompanies called with query: ", query);
     // const data = await axios.get<SearchResponse>(
     //   `https://financialmodelingprep.com/stable/search-symbol?query=${query}&limit=10&exchange=NASDAQ&apikey=${apiKey}`,
     // );
@@ -78,6 +77,7 @@ export const searchCompanies = async (query: string) => {
 
 export const getCompanyProfile = async (query: string) => {
   try {
+    console.log("getCompanyProfile called with query: ", query);
     // const data = await axios.get<CompanyProfile2[]>(
     //   // `https://financialmodelingprep.com/stable/profile/${query}?apikey=${apiKey}`
     //   `https://financialmodelingprep.com/stable/profile?symbol=${query}&apikey=${apiKey}`,
@@ -90,6 +90,7 @@ export const getCompanyProfile = async (query: string) => {
 
 export const getKeyMetrics = async (query: string) => {
   try {
+    console.log("getKeyMetrics called with query: ", query);
     // const data = await axios.get<CompanyKeyMetrics[]>(
     //   // `https://financialmodelingprep.com/stable/key-metrics-ttm/${query}?limit=40&apikey=${apiKey}`
     //   `https://financialmodelingprep.com/stable/key-metrics?symbol=${query}&apikey=${apiKey}`,
@@ -101,6 +102,7 @@ export const getKeyMetrics = async (query: string) => {
 };
 export const getIncomeStatement = async (query: string) => {
   try {
+    console.log("getIncomeStatement called with query: ", query);
     // const data = await axios.get<CompanyIncomeStatement[]>(
     //   // `https://financialmodelingprep.com/stable/income-statement/${query}?limit=50&apikey=${apiKey}`
     //   `https://financialmodelingprep.com/stable/income-statement?symbol=${query}&apikey=${apiKey}`,
@@ -113,6 +115,7 @@ export const getIncomeStatement = async (query: string) => {
 
 export const getBalanceSheet = async (query: string) => {
   try {
+    console.log("getBalanceSheet called with query: ", query);
     // const data = await axios.get<CompanyBalanceSheet[]>(
     //   // `https://financialmodelingprep.com/stable/balance-sheet-statement/${query}?limit=20&apikey=${apiKey}`
     //   `https://financialmodelingprep.com/stable/balance-sheet-statement?symbol=${query}&apikey=${apiKey}`,
@@ -125,6 +128,7 @@ export const getBalanceSheet = async (query: string) => {
 
 export const getCashFlow = async (query: string) => {
   try {
+    console.log("getCashFlow called with query: ", query);
     // const data = await axios.get<CompanyCashFlow[]>(
     //   // `https://financialmodelingprep.com/stable/cash-flow-statement/${query}?limit=100&apikey=${apiKey}`
     //   `https://financialmodelingprep.com/stable/cash-flow-statement?symbol=${query}&apikey=${apiKey}`,
@@ -135,8 +139,9 @@ export const getCashFlow = async (query: string) => {
   }
 };
 
-export const getCompData = async (query: string) : Promise<any> => {
+export const getCompData = async (query: string): Promise<any> => {
   try {
+    console.log("getCompData called with query: ", query);
     // const data = await axios.get<CompanyCompData[]>(
     //   //`https://financialmodelingprep.com/api/v4/stock_peers?symbol=${query}&apikey=${apiKey}`
     //   `https://financialmodelingprep.com/stable/stock-peers?symbol=${query}&apikey=${apiKey}`,
@@ -149,6 +154,7 @@ export const getCompData = async (query: string) : Promise<any> => {
 
 export const getTenK = async (query: string) => {
   try {
+    console.log("getTenK called with query: ", query);
     // const data = await axios.get<CompanyTenK[]>(
     //   // `https://financialmodelingprep.com/stable/sec_filings/${query}?type=10-K&page=0&apikey=${apiKey}`,
     //   `https://financialmodelingprep.com/stable/sec-filings-company-search/symbol?symbol=${query}&apikey=${apiKey}`,
@@ -164,6 +170,7 @@ export const getHistoricalDividend = async (
   query: string,
 ): Promise<HistoricalPriceResponse | undefined> => {
   try {
+    console.log("getHistoricalDividend called with query: ", query);
     // const data = await axios.get<CompanyHistoricalDividend>(
     //   // `https://financialmodelingprep.com/stable/historical-price-full/stock_dividend/${query}?apikey=${apiKey}`,
     //   `https://financialmodelingprep.com/stable/historical-price-eod/full?symbol=${query}&apikey=${apiKey}`

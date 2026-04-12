@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 const SearchPage = () => {
   const [search, setSearch] = useState<string>("");
   const [portfolioValues, setPortfolioValues] = useState<PortfolioGet[] | null>(
-    []
+    [],
   );
   const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -91,8 +91,18 @@ const SearchPage = () => {
       if (result!.data.length === 0 && search.length !== 0) {
         toast.error("Company not found");
       }
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const mappedData: CompanySearch[] = result!.data.map((item: any) => ({
+        symbol: item.symbol,
+        name: item.name,
+        currency: item.currency,
+        exchangeShortName: item.exchange, // map here
+        stockExchange: item.exchangeFullName, // map here
+      }));
+
       console.log("else if hitting");
-      setSearchResult(result!.data);
+      setSearchResult(mappedData);
     }
   };
   return (

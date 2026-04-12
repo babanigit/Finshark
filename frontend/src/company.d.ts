@@ -240,6 +240,8 @@ export interface CompanyBalanceSheet {
   netDebt: number;
   link: string;
   finalLink: string;
+    filingDate: string; // ✅ FIXED
+
 }
 
 export interface CompanyCashFlow {

@@ -5,7 +5,6 @@ import { getHistoricalDividend } from "../../api";
 import SimpleLineChart from "../SimpleLineChart/SimpleLineChart";
 import {
   HistoricalPriceEntry,
-  HistoricalPriceResponse,
 } from "../../Models/Historic_Divident";
 // import { Dividend } from "../../company";
 

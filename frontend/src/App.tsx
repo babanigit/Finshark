@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 import { ThemeProvider } from "styled-components";
 import { themes } from "./assets/theme";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 interface SetThemeContextType {
   (value: string): void;
@@ -13,8 +13,23 @@ interface SetThemeContextType {
 
 export const SetThemeContext = createContext<SetThemeContextType>(() => {});
 
+const api = import.meta.env.VITE_BACKEND_API_URL || "" ;
+
+console.log(" the api link is :- ", api);
+
+
 const App = () => {
-  const [themeState, setThemeState] = useState<string>("light");
+  const [themeState, setThemeState] = useState<string>("dark");
+
+  useEffect(() => {
+    
+    // hit the server to check if it's up
+    fetch(`${api}api/status`)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error fetching status:", error));
+
+  }, []);
 
   return (
   

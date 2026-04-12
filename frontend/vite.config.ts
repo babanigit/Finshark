@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5222/",
+        target: "https://finshark-api-gwn0.onrender.com/",
         changeOrigin: true,
       },
     },

@@ -8,7 +8,7 @@ import {
   formatLargeNonMonetaryNumber,
   formatRatio,
 } from "../../Helpers/NumberFormatting";
-import StockComment from "../StockComment/StockComment";
+// import StockComment from "../StockComment/StockComment";
 // import StockComment from "../StockComment/StockComment";
 
 const tableConfig = [
@@ -86,7 +86,7 @@ const CompanyProfile = () => {
     const getCompanyKeyRatios = async () => {
       const value = await getKeyMetrics(ticker);
 
-      setCompanyData(value);
+      setCompanyData(value?.data[0]);
 
       console.log("companyData", companyData);
     };

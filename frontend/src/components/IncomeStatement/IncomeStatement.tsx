@@ -79,10 +79,17 @@ const IncomeStatement = () => {
   const ticker = useOutletContext<string>();
   const [incomeStatement, setIncomeStatement] =
     useState<CompanyIncomeStatement[]>();
+    
   useEffect(() => {
     const getRatios = async () => {
       const result = await getIncomeStatement(ticker!);
-      setIncomeStatement(result!.data);
+
+      const mapIncomeStatement = (data: any): CompanyIncomeStatement => ({
+        ...data,
+        filingDate: data.filingDate, // fix naming if needed
+      });
+
+      setIncomeStatement(result?.data.map(mapIncomeStatement));
     };
     getRatios();
   }, []);

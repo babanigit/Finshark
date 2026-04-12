@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CompanyBalanceSheet } from "../../company";
+import { CompanyBalanceSheet, CompanyKeyMetrics } from "../../company";
 import { useOutletContext } from "react-router-dom";
 import RatioList from "../RatioList/RatioList";
 import { getBalanceSheet } from "../../api";
@@ -78,13 +78,21 @@ const config = [
   },
 ];
 
+const mapBalanceSheet = (data: any): CompanyKeyMetrics => ({
+  ...data,
+  fillingDate: data.filingDate, // fix naming
+  calendarYear: data.calendarYear ?? "", // fallback
+});
+
+
 const BalanceSheet = () => {
   const ticker = useOutletContext<string>();
-  const [companyData, setCompanyData] = useState<CompanyBalanceSheet>();
+  const [companyData, setCompanyData] = useState<CompanyKeyMetrics>();
   useEffect(() => {
     const getCompanyData = async () => {
       const value = await getBalanceSheet(ticker!);
-      setCompanyData(value?.data[0]);
+      console.log("BalanceSheet getCompanyData value: ", value);
+      setCompanyData(mapBalanceSheet(value?.data[0]));
     };
     getCompanyData();
   }, []);
