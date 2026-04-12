@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../Context/useAuth";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 type LoginFormsInputs = {
   userName: string;
@@ -15,6 +16,19 @@ const validation = Yup.object().shape({
 });
 
 const LoginPage = () => {
+
+  useEffect(() => {
+    checkStatus();
+  }, []);
+  
+
+  function checkStatus(){
+    fetch("/api/status")
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error fetching status:", error));
+  }
+
   const navigate = useNavigate();
   const { loginUser } = useAuth();
   const {

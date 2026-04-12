@@ -1,38 +1,60 @@
-# Ignore everything in the frontend folder
-frontend/*
+# # Ignore everything in the frontend folder
+# frontend/*
 
-# Except the dist folder and its contents
-!frontend/dist/
-!frontend/dist/**
+# # Except the dist folder and its contents
+# # !frontend/dist/
+# # !frontend/dist/**
 
-# Other ignores
+# frontend/dist/
+# frontend/dist/**
+
+# # Other ignores
+# bin/
+# obj/
+# # out/
+# *.user
+# *.suo
+# *.userosscache
+# *.sln.docstates
+# *.log
+# .vscode/
+# .idea/
+# *.sln.iml
+# TestResults/
+# *.dbmdl
+# *.pdb
+# *.mdb
+# *.nupkg
+# *.snupkg
+# packages/
+# Dockerfile.*
+# *.tmp
+# *.bak
+# *.swp
+# *.DS_Store
+# Thumbs.db
+# .git/
+# .gitignore
+# .env
+# secrets.json
+# # appsettings.Development.json
+# appsettings.json.example
+
+
+
+
+
+# new ignore file
+
 bin/
 obj/
-# out/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-*.log
-.vscode/
-.idea/
-*.sln.iml
-TestResults/
-*.dbmdl
-*.pdb
-*.mdb
-*.nupkg
-*.snupkg
-packages/
-Dockerfile.*
-*.tmp
-*.bak
-*.swp
-*.DS_Store
-Thumbs.db
+node_modules/
 .git/
 .gitignore
-.env
-secrets.json
-# appsettings.Development.json
-appsettings.json.example
+frontend/   
+.env        
+Dockerfile
+docker-compose.yml
+postman_collections
+ss
+

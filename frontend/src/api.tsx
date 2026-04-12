@@ -31,6 +31,33 @@ const apiKey: string = import.meta.env.VITE_FMI_API_KEY;
 if (!apiKey) {
   console.error("API key is missing!");
 }
+
+
+
+export interface Iapistatus{
+  message:string;
+}
+
+
+export const apistatus = async (query: string) => {
+  try {
+    const data = await axios.get<Iapistatus>(
+      `http://localhost:5222/api/status`,
+    );
+    return data;
+    // return { data: search_data };
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error("error message: ", error.message);
+      return error.message;
+    } else {
+      console.error("unexpected error: ", error);
+      return "An expected error has occured.";
+    }
+  }
+};
+
+
 //https://financialmodelingprep.com/stable/search-symbol?query=tata&limit=10&exchange=NASDAQ&apikey=vxeZ0Lbxl3xfWEU4ftBvenLHBmrWcXmj
 export const searchCompanies = async (query: string) => {
   try {

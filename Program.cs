@@ -13,6 +13,8 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+AppContext.SetSwitch("System.Net.DisableIPv6", true);
+
 // Load .env variables
 DotNetEnv.Env.Load();
 builder.Configuration.AddEnvironmentVariables();
@@ -21,7 +23,21 @@ var config = builder.Configuration;
 var connStr = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
               ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
-Console.WriteLine($"✅ Connection String is: {connStr}");
+
+var jwtAudience = Environment.GetEnvironmentVariable("JWT__Audience")
+              ?? builder.Configuration.GetConnectionString("JWT:Audience");
+
+
+var jwtIssuer = Environment.GetEnvironmentVariable("JWT__Issuer")
+              ?? builder.Configuration.GetConnectionString("JWT:Issuer");
+
+
+var jwtSigningKey = Environment.GetEnvironmentVariable("JWT__SigningKey")
+              ?? builder.Configuration.GetConnectionString("JWT:SigningKey");
+
+
+
+Console.WriteLine($"✅ env's :- connStr :- {connStr} :jwtAudience :- {jwtAudience} : jwtIssuer :- {jwtIssuer} : jwtSigningKey :- {jwtSigningKey} : ");
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -46,7 +62,7 @@ builder.Services.AddRazorPages();
 
 // Register ApplicationDbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connStr) // UseSqlServer,  UseNpgsql
+    options.UseNpgsql(connStr) // UseSqlServer,  UseNpgsql
            .EnableSensitiveDataLogging()
            .LogTo(Console.WriteLine, LogLevel.Information)
 );
@@ -76,12 +92,12 @@ builder.Services.AddAuthentication(options =>
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
-        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidIssuer = jwtIssuer,
         ValidateAudience = true,
-        ValidAudience = builder.Configuration["JWT:Audience"],
+        ValidAudience = jwtAudience,
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
-            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"]!)
+            System.Text.Encoding.UTF8.GetBytes(jwtSigningKey!)
         )
     };
 });
@@ -155,7 +171,13 @@ app.MapRazorPages().WithStaticAssets();
 app.MapControllers();
 
 // Basic route for /
-app.MapGet("/api/status", () => "API is live");
+// app.MapGet("/api/status", () => "API is live");
+
+app.MapGet("/api/status", () =>
+{
+    return Results.Json(new { message = "API is live" });
+});
+
 
 
 // // This should come after all other route mappings
