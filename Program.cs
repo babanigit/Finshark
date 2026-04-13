@@ -9,192 +9,148 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
-// using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-AppContext.SetSwitch("System.Net.DisableIPv6", true);
-
-// Load .env variables
+// ── Environment ────────────────────────────────────────────────────────────────
 DotNetEnv.Env.Load();
 builder.Configuration.AddEnvironmentVariables();
-var config = builder.Configuration;
 
-var connStr = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
-              ?? builder.Configuration.GetConnectionString("DefaultConnection");
+var connStr       = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
+                    ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
+var jwtAudience   = Environment.GetEnvironmentVariable("JWT__Audience")
+                    ?? builder.Configuration["JWT:Audience"];
 
-var jwtAudience = Environment.GetEnvironmentVariable("JWT__Audience")
-              ?? builder.Configuration.GetConnectionString("JWT:Audience");
-
-
-var jwtIssuer = Environment.GetEnvironmentVariable("JWT__Issuer")
-              ?? builder.Configuration.GetConnectionString("JWT:Issuer");
-
+var jwtIssuer     = Environment.GetEnvironmentVariable("JWT__Issuer")
+                    ?? builder.Configuration["JWT:Issuer"];
 
 var jwtSigningKey = Environment.GetEnvironmentVariable("JWT__SigningKey")
-              ?? builder.Configuration.GetConnectionString("JWT:SigningKey");
+                    ?? builder.Configuration["JWT:SigningKey"];
 
+Console.WriteLine($"✅ connStr={connStr} | jwtAudience={jwtAudience} | jwtIssuer={jwtIssuer}");
 
-
-Console.WriteLine($"✅ env's :- connStr :- {connStr} :jwtAudience :- {jwtAudience} : jwtIssuer :- {jwtIssuer} : jwtSigningKey :- {jwtSigningKey} : ");
-
-// Add services to the container.
-builder.Services.AddControllers();
-
-// builder.Services.AddCors();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
-    });
-
-//     options.AddPolicy("AllowFrontend", policy =>
-// {
-//     policy.WithOrigins("http://localhost:5173", "http://localhost:4200")
-//           .AllowAnyMethod()
-//           .AllowAnyHeader()
-//           .AllowCredentials();
-// });
-
-});
-
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-{
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-});
+// ── Services ───────────────────────────────────────────────────────────────────
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(o =>
+        o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 builder.Services.AddRazorPages();
 
-// Register ApplicationDbContext
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connStr) // UseSqlServer,  UseNpgsql
-           .EnableSensitiveDataLogging()
-           .LogTo(Console.WriteLine, LogLevel.Information)
-);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+});
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connStr)
+           .EnableSensitiveDataLogging()
+           .LogTo(Console.WriteLine, LogLevel.Information));
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireUppercase = true;
+    options.Password.RequireDigit           = true;
+    options.Password.RequireLowercase       = true;
+    options.Password.RequireUppercase       = true;
     options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequiredLength = 12;
+    options.Password.RequiredLength         = 12;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
-    options.DefaultChallengeScheme =
-    options.DefaultForbidScheme =
-    options.DefaultScheme =
-    options.DefaultSignInScheme =
-    options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
+    options.DefaultChallengeScheme    =
+    options.DefaultForbidScheme       =
+    options.DefaultScheme             =
+    options.DefaultSignInScheme       =
+    options.DefaultSignOutScheme      = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = true,
-        ValidIssuer = jwtIssuer,
-        ValidateAudience = true,
-        ValidAudience = jwtAudience,
+        ValidateIssuer           = true,
+        ValidIssuer              = jwtIssuer,
+        ValidateAudience         = true,
+        ValidAudience            = jwtAudience,
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(
-            System.Text.Encoding.UTF8.GetBytes(jwtSigningKey!)
-        )
+        IssuerSigningKey         = new SymmetricSecurityKey(
+            System.Text.Encoding.UTF8.GetBytes(jwtSigningKey!))
     };
 });
 
-// Dependency Injections
+// Dependency injection
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
-builder.Services.AddScoped<IStockRepository, StockRepository>();
-builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IStockRepository,     StockRepository>();
+builder.Services.AddScoped<ICommentRepository,   CommentRepository>();
+builder.Services.AddScoped<ITokenService,        TokenService>();
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
-builder.Services.AddScoped<IFMPService, FMPService>();
-builder.Services.AddHttpClient<IFMPService, FMPService>();
+builder.Services.AddScoped<IFMPService,          FMPService>();
+builder.Services.AddHttpClient<IFMPService,      FMPService>();
 
+// ── Build ──────────────────────────────────────────────────────────────────────
 var app = builder.Build();
 
-var reactPath = Path.Combine(Directory.GetCurrentDirectory(), "frontend", "dist");
-
-Console.WriteLine(" ✅  Resolved path: " + reactPath);
-
-if (!Directory.Exists(reactPath))
-{
-    Console.WriteLine($" ✅ Serving react from: {reactPath}");
-    Console.WriteLine(" ✅ Dist folder exists? " + Directory.Exists(reactPath));
-    Console.WriteLine(" ✅ Index.html exists? " + File.Exists(Path.Combine(reactPath, "index.html")));
-    return;
-}
-
-
-// Migrate database automatically
+// ── Auto-migrate ───────────────────────────────────────────────────────────────
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    // db.Database.Migrate();  // <--- This line does the migration at startup
+    db.Database.Migrate();
 }
 
+// ── React static files ─────────────────────────────────────────────────────────
+var reactPath = Path.Combine(Directory.GetCurrentDirectory(), "frontend", "dist");
+var reactExists = Directory.Exists(reactPath);
 
-// Configure the HTTP request pipeline.
+Console.WriteLine(reactExists
+    ? $"✅ React dist found at: {reactPath}"
+    : $"⚠️  React dist NOT found at: {reactPath} — serving API only");
+
+if (reactExists)
+{
+    app.UseDefaultFiles(new DefaultFilesOptions
+    {
+        FileProvider = new PhysicalFileProvider(reactPath),
+        RequestPath  = ""
+    });
+
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(reactPath),
+        RequestPath  = ""
+    });
+}
+
+// ── Middleware pipeline ────────────────────────────────────────────────────────
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
 
-// Serve default files (like index.html)
-app.UseDefaultFiles(new DefaultFilesOptions
-{
-    FileProvider = new PhysicalFileProvider(reactPath),
-    RequestPath = ""
-});
-
-// Serve static files (js, css, images)
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(reactPath),
-    RequestPath = ""
-});
-
 app.UseHttpsRedirection();
-
-
-
 app.UseRouting();
-
-// app.UseCors();
-app.UseCors("AllowAll");
+app.UseCors("AllowAll");       // must come after UseRouting
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapStaticAssets();
-app.MapRazorPages().WithStaticAssets();
+// ── Endpoints ──────────────────────────────────────────────────────────────────
+app.MapRazorPages();
 app.MapControllers();
 
-// Basic route for /
-// app.MapGet("/api/status", () => "API is live");
+app.MapGet("/api/status", () => Results.Json(new { message = "API is live" }));
 
-app.MapGet("/api/status", () =>
+// SPA fallback — must be last, only when dist exists
+if (reactExists)
 {
-    return Results.Json(new { message = "API is live" });
-});
-
-
-
-// This should come after all other route mappings
-// This is important to serve index.html for react routing
-app.MapFallbackToFile("index.html", new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(reactPath)
-});
-
+    app.MapFallbackToFile("index.html", new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(reactPath)
+    });
+}
 
 app.Run();
