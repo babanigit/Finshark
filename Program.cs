@@ -42,16 +42,28 @@ Console.WriteLine($"✅ env's :- connStr :- {connStr} :jwtAudience :- {jwtAudien
 // Add services to the container.
 builder.Services.AddControllers();
 
-// builder.Services.AddCors();
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowAll", policy =>
+//     {
+//         policy.AllowAnyOrigin()
+//               .AllowAnyMethod()
+//               .AllowAnyHeader();
+//     });
+// });
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("ProdCors", policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        policy.WithOrigins(
+                "https://finshark-67oc2nban-aniket-panchals-projects.vercel.app"
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     });
 });
+
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
@@ -162,7 +174,9 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 // app.UseCors();
-app.UseCors("AllowAll");
+// app.UseCors("AllowAll");
+app.UseCors("ProdCors");
+
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -24,7 +24,7 @@ const App = () => {
   useEffect(() => {
     
     // hit the server to check if it's up
-    fetch(`${api}api/status`)
+    fetch(`${api}status`)
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error("Error fetching status:", error));
