@@ -46,7 +46,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connStr)
+    options.UseNpgsql(connStr) //UseNpgsql  ,  UseSqlServer
            .EnableSensitiveDataLogging()
            .LogTo(Console.WriteLine, LogLevel.Information));
 

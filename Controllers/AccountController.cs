@@ -33,6 +33,7 @@ namespace Finshark.Controllers
         {
             try
             {
+                Console.WriteLine("register hitted");
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
@@ -77,6 +78,7 @@ namespace Finshark.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
+            Console.WriteLine("login hitted");
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
