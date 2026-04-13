@@ -8,7 +8,7 @@ console.log(" the api link is :- ", api);
 
 export const loginAPI = async (username: string, password: string) => {
   try {
-    const res = await fetch(`${api}account/login`, {
+    const res = await fetch(`${api}api/account/login`, {
       method: "POST",
       credentials: "include", // ✅ same as withCredentials
       headers: {
@@ -40,7 +40,7 @@ export const registerAPI = async (
   password: string
 ) => {
   try {
-    const res = await fetch(`${api}account/register`, {
+    const res = await fetch(`${api}api/account/register`, {
       method: "POST",
       credentials: "include",
       headers: {

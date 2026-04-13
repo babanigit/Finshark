@@ -5,13 +5,13 @@ import react from "@vitejs/plugin-react-swc";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // server: {
-  //   proxy: {
-  //     "/api": {
-  //       target: "https://finshark-api-gwn0.onrender.com/",
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:5222/",
+        changeOrigin: true,
+      },
+    },
+  },
   envPrefix: "VITE_", // Ensure this prefix is correct
 });

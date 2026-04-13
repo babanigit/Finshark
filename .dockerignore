@@ -1,9 +1,9 @@
-# # Ignore everything in the frontend folder
-# frontend/*
+# Ignore everything in the frontend folder
+frontend/*
 
-# # Except the dist folder and its contents
-# # !frontend/dist/
-# # !frontend/dist/**
+# Except the dist folder and its contents
+!frontend/dist/
+!frontend/dist/**
 
 # frontend/dist/
 # frontend/dist/**
@@ -51,7 +51,7 @@ obj/
 node_modules/
 .git/
 .gitignore
-frontend/   
+# frontend/   
 .env        
 Dockerfile
 docker-compose.yml
