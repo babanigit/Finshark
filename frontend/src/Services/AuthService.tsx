@@ -1,32 +1,38 @@
-import axios from "axios";
+// import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { UserProfileToken } from "../Models/User";
 
-const api = import.meta.env.VITE_BACKEND_API_URL || "" ;
+const api = import.meta.env.VITE_BACKEND_API_URL || "";
 
 console.log(" the api link is :- ", api);
 
-// Create a default Axios instance with credentials enabled
-const axiosInstance = axios.create({
-  baseURL: api,
-  withCredentials: true, // ✅ Allows sending cookies and headers
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
 export const loginAPI = async (username: string, password: string) => {
   try {
-    const data = await axiosInstance.post<UserProfileToken>(api + "account/login", {
-      username: username,
-      password: password,
+    const res = await fetch(`${api}account/login`, {
+      method: "POST",
+      credentials: "include", // ✅ same as withCredentials
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
     });
-    return data;
+
+    if (!res.ok) {
+      throw new Error("Login failed");
+    }
+
+    const data: UserProfileToken = await res.json();
+    return { data }; // mimic axios response shape
   } catch (error) {
-    console.log("[bab] --- error from  loginAPI");
+    console.log("[bab] --- error from loginAPI");
     handleError(error);
   }
 };
+
+
 
 export const registerAPI = async (
   email: string,
@@ -34,17 +40,28 @@ export const registerAPI = async (
   password: string
 ) => {
   try {
-    const data = await axiosInstance.post<UserProfileToken>(
-      api + "account/register",
-      {
-        email: email,
-        username: username,
-        password: password,
-      }
-    );
-    return data;
+    const res = await fetch(`${api}account/register`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        username,
+        password,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Registration failed");
+    }
+
+    const data: UserProfileToken = await res.json();
+    return { data };
   } catch (error) {
-    console.log("[bab] --- error from  registerAPI");
+    console.log("[bab] --- error from registerAPI");
     handleError(error);
   }
 };
+

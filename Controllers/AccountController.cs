@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Finshark.Controllers
 {
-    [Route("api/api/account")]
+    [Route("api/account")]
     [ApiController]
     public class AccountController : ControllerBase
     {
